@@ -53,9 +53,10 @@
 /* Life Goals follows the PDF's two-sided radial map. */
 .life-goals{padding:34px 24px 44px}.goal-orbit{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(150px,.9fr) 185px minmax(150px,.9fr) minmax(0,1.15fr);grid-template-rows:repeat(3,250px);gap:12px 10px;align-items:center;padding:18px 0;background:repeating-conic-gradient(from -7deg at 50% 50%,rgba(177,130,51,.22) 0 1deg,transparent 1deg 8deg)}.goal-orbit .sunburst{grid-area:1/3/4/4;width:175px;height:175px;align-self:center;z-index:2;background:rgba(250,242,222,.94);border:1px solid #7e5a3b;box-shadow:0 0 0 9px rgba(244,230,201,.82),0 0 0 10px #8c6a49}.goal-orbit .sunburst:before{inset:12px;border:2px dashed rgba(78,54,37,.78)}.goal-orbit .sunburst:after{display:none}.goal-orbit .sunburst span{font-size:15px;line-height:1.75}.goal-orbit .sunburst small{font:10px Georgia;letter-spacing:.12em}
 .goal-orbit article{margin:0;padding:0;border:0;background:rgba(245,226,191,.18);display:grid;grid-template-columns:minmax(130px,.95fr) minmax(145px,1.05fr);gap:10px;align-items:center;text-align:left;position:relative}.goal-orbit article:nth-of-type(1){grid-area:1/1/2/3}.goal-orbit article:nth-of-type(2){grid-area:1/4/2/6}.goal-orbit article:nth-of-type(3){grid-area:2/1/3/3}.goal-orbit article:nth-of-type(4){grid-area:2/4/3/6}.goal-orbit article:nth-of-type(5){grid-area:3/1/4/3}.goal-orbit article:nth-of-type(6){grid-area:3/4/4/6}.goal-orbit article:nth-of-type(odd) .model-analysis{grid-column:1}.goal-orbit article:nth-of-type(odd) .model-visual{grid-column:2;grid-row:1}.goal-orbit article:nth-of-type(even) .model-visual{grid-column:1}.goal-orbit article:nth-of-type(even) .model-analysis{grid-column:2}.goal-orbit article:nth-of-type(odd):after,.goal-orbit article:nth-of-type(even):after{top:50%;width:18px;border-top:1px dashed #725037}.goal-orbit article:nth-of-type(odd):after{right:-19px}.goal-orbit article:nth-of-type(even):after{left:-19px}
-.model-visual{position:relative}.model-visual .photo-slot{width:100%;height:154px;min-height:154px;border:1px solid rgba(91,61,39,.34);border-radius:18px;background:rgba(255,252,241,.92);box-shadow:0 5px 12px rgba(74,45,27,.10)}.model-visual .photo-slot>label{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:10px;background:transparent;color:#62452f;opacity:1}.model-visual .photo-slot>label span{padding:5px 8px;border-radius:14px;background:rgba(238,218,182,.86);font-size:8px}.model-visual .photo-slot.has-photo>label span{opacity:0}.model-visual .photo-slot.has-photo:hover>label span{opacity:1;background:rgba(52,34,24,.76);color:#fff}.photo-placeholder{position:relative;z-index:1;max-width:150px;padding:18px 10px 30px;text-align:center;pointer-events:none}.photo-placeholder b{display:block;font-size:14px;margin-bottom:8px}.photo-placeholder span{display:block;font-size:9px;line-height:1.6}.model-symbol{position:absolute;z-index:3;left:-13px;top:50%;transform:translateY(-50%);width:34px;height:34px;display:grid;place-items:center;border:1px solid #8a6642;border-radius:50%;background:#f8edda;font-size:17px}.model-visual>em{display:block;text-align:center;margin-top:6px;font-style:normal;font-size:9px;color:#7d6047}.model-analysis{position:relative;padding:10px 8px}.model-analysis:before{content:"";position:absolute;left:2px;top:50px;bottom:24px;border-left:1px dashed #79583d}.model-analysis .model-name{width:100%;margin:0 0 5px;padding:6px 8px;border:1px solid rgba(102,72,46,.35);border-radius:12px;background:rgba(252,244,226,.74);text-align:center;font-weight:600}.model-analysis>small{display:block;margin-bottom:5px;padding-left:8px;font-size:8px;line-height:1.4}.model-analysis .strength-list{margin:0;padding-left:10px}.model-analysis .strength-list input{min-height:25px;padding:4px 3px!important;font-size:8px!important;border-bottom:1px dashed rgba(91,64,43,.55)!important}.model-analysis .pass-button{margin:7px 0 0 10px;width:calc(100% - 10px)}
-@media(max-width:1050px){.life-goals{padding:28px 20px 38px}.goal-orbit{display:block;background:repeating-conic-gradient(from -7deg at 50% 150px,rgba(177,130,51,.18) 0 1deg,transparent 1deg 9deg)}.goal-orbit .sunburst{margin:20px auto 35px}.goal-orbit article:nth-of-type(n){display:grid;grid-template-columns:minmax(150px,.9fr) minmax(180px,1.1fr);max-width:620px;min-height:250px;margin:16px auto}.goal-orbit article:nth-of-type(odd) .model-analysis,.goal-orbit article:nth-of-type(even) .model-analysis{grid-column:2}.goal-orbit article:nth-of-type(odd) .model-visual,.goal-orbit article:nth-of-type(even) .model-visual{grid-column:1;grid-row:1}.goal-orbit article:after{display:none}.model-visual .photo-slot{height:190px;min-height:190px}}
-@media(max-width:720px){.goal-orbit article:nth-of-type(n){grid-template-columns:1fr;max-width:390px;padding:14px;border:1px dashed rgba(95,63,39,.38);background:rgba(247,230,198,.35)}.goal-orbit article:nth-of-type(n) .model-visual,.goal-orbit article:nth-of-type(n) .model-analysis{grid-column:1}.goal-orbit article:nth-of-type(n) .model-visual{grid-row:1}.goal-orbit article:nth-of-type(n) .model-analysis{grid-row:2}.model-visual .photo-slot{height:230px;min-height:230px}.model-symbol{left:8px;top:16px;transform:none}.photo-placeholder{max-width:210px}.model-analysis .strength-list input{font-size:10px!important}}
+.model-visual{position:relative}.model-visual .photo-slot,.model-visual .dream-card{width:100%;height:154px;min-height:154px;border:1px solid rgba(91,61,39,.34);border-radius:18px;background:rgba(255,252,241,.92);box-shadow:0 5px 12px rgba(74,45,27,.10)}.model-visual .photo-slot>label{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:10px;background:transparent;color:#62452f;opacity:1}.model-visual .photo-slot>label span{padding:5px 8px;border-radius:14px;background:rgba(238,218,182,.86);font-size:8px}.model-visual .photo-slot.has-photo>label span{opacity:0}.model-visual .photo-slot.has-photo:hover>label span{opacity:1;background:rgba(52,34,24,.76);color:#fff}.photo-placeholder{position:relative;z-index:1;max-width:150px;padding:18px 10px 30px;text-align:center;pointer-events:none}.photo-placeholder b{display:block;font-size:14px;margin-bottom:8px}.photo-placeholder span{display:block;font-size:9px;line-height:1.6}.model-symbol{position:absolute;z-index:3;left:-13px;top:50%;transform:translateY(-50%);width:34px;height:34px;display:grid;place-items:center;border:1px solid #8a6642;border-radius:50%;background:#f8edda;font-size:17px}.model-visual>em{display:block;text-align:center;margin-top:6px;font-style:normal;font-size:9px;color:#7d6047}.model-analysis{position:relative;padding:10px 8px}.model-analysis:before{content:"";position:absolute;left:2px;top:50px;bottom:24px;border-left:1px dashed #79583d}.model-analysis .model-name{width:100%;margin:0 0 5px;padding:6px 8px;border:1px solid rgba(102,72,46,.35);border-radius:12px;background:rgba(252,244,226,.74);text-align:center;font-weight:600}.model-analysis>small{display:block;margin-bottom:5px;padding-left:8px;font-size:8px;line-height:1.4}.model-analysis .strength-list{margin:0;padding-left:10px}.model-analysis .strength-list input{min-height:25px;padding:4px 3px!important;font-size:8px!important;border-bottom:1px dashed rgba(91,64,43,.55)!important}.model-analysis .pass-button{margin:7px 0 0 10px;width:calc(100% - 10px)}
+@media(max-width:1050px){.life-goals{padding:28px 20px 38px}.goal-orbit{display:block;background:repeating-conic-gradient(from -7deg at 50% 150px,rgba(177,130,51,.18) 0 1deg,transparent 1deg 9deg)}.goal-orbit .sunburst{margin:20px auto 35px}.goal-orbit article:nth-of-type(n){display:grid;grid-template-columns:minmax(150px,.9fr) minmax(180px,1.1fr);max-width:620px;min-height:250px;margin:16px auto}.goal-orbit article:nth-of-type(odd) .model-analysis,.goal-orbit article:nth-of-type(even) .model-analysis{grid-column:2}.goal-orbit article:nth-of-type(odd) .model-visual,.goal-orbit article:nth-of-type(even) .model-visual{grid-column:1;grid-row:1}.goal-orbit article:after{display:none}.model-visual .photo-slot,.model-visual .dream-card{height:190px;min-height:190px}}
+@media(max-width:720px){.goal-orbit article:nth-of-type(n){grid-template-columns:1fr;max-width:390px;padding:14px;border:1px dashed rgba(95,63,39,.38);background:rgba(247,230,198,.35)}.goal-orbit article:nth-of-type(n) .model-visual,.goal-orbit article:nth-of-type(n) .model-analysis{grid-column:1}.goal-orbit article:nth-of-type(n) .model-visual{grid-row:1}.goal-orbit article:nth-of-type(n) .model-analysis{grid-row:2}.model-visual .photo-slot,.model-visual .dream-card{height:230px;min-height:230px}.model-symbol{left:8px;top:16px;transform:none}.photo-placeholder{max-width:210px}.model-analysis .strength-list input{font-size:10px!important}}
+.dream-photo{position:relative}.dream-card{position:relative;overflow:visible}.dream-sticker{display:none;position:absolute;z-index:3;left:50%;top:50%;width:150px;touch-action:none;cursor:grab;transform-origin:center}.dream-sticker:active{cursor:grabbing}.dream-sticker img{display:block;width:100%;height:auto;border:0;background:transparent;box-shadow:none;user-select:none;pointer-events:none}.dream-photo.has-photo .dream-sticker{display:block}.dream-photo.has-photo .dream-card{border-color:transparent;background:transparent;box-shadow:none}.dream-resize{position:absolute;right:-10px;bottom:-10px;width:24px;height:24px;border:1px solid #fff;border-radius:50%;background:var(--ink-soft);color:#fff;font-size:11px;line-height:1;touch-action:none;cursor:nwse-resize}.dream-placeholder{position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:14px 12px 30px}.dream-placeholder b{font-size:13px}.dream-placeholder span{display:block;max-width:150px;margin:6px auto 0;font-size:9px;line-height:1.6;color:var(--ink-soft)}.dream-photo.has-photo .dream-placeholder{display:none}.dream-upload{position:absolute;z-index:5;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:8px;cursor:pointer}.dream-upload input{display:none}.dream-upload span{padding:5px 9px;border-radius:14px;background:rgba(232,210,171,.88);font-size:8px}.dream-photo.has-photo .dream-upload{inset:auto 4px 4px auto;padding:0}.dream-photo.has-photo .dream-upload span{opacity:.2}.dream-photo.has-photo .dream-card:hover .dream-upload span{opacity:1;background:rgba(45,29,21,.76);color:#fff}.dream-delete{position:absolute;z-index:6;right:6px;top:6px;width:22px;height:22px;border:1px solid rgba(255,255,255,.6);border-radius:50%;background:rgba(55,34,23,.72);color:#fff;font-size:12px;line-height:1}.dream-tag{display:none;margin:6px auto 0;padding:5px 8px;max-width:180px;border:1px solid var(--line);border-radius:8px;background:rgba(249,238,211,.7);text-align:center;color:var(--ink-soft);line-height:1.4}.dream-tag b{display:block;font-size:9px;color:var(--ink)}.dream-tag span{display:block;margin-top:2px;font-size:8px}.dream-photo.has-photo .dream-tag{display:block}.dream-controls{display:none;margin-top:5px;justify-content:space-between;align-items:center;padding:5px 2px;border-top:1px solid var(--line);font-size:8px;color:var(--ink-soft)}.dream-photo.has-photo .dream-controls{display:flex}.dream-reset{padding:3px 6px;border:0;border-bottom:1px solid var(--gold);background:transparent;color:var(--ink-soft);font-size:8px;cursor:pointer}.dream-tip{opacity:.75}.strength-row{display:grid;grid-template-columns:16px minmax(0,1fr) 20px;align-items:center;gap:2px;margin:4px 0}.strength-row span{color:var(--ink-soft);font-size:9px;text-align:right}.strength-row input{min-width:0;width:100%;padding:5px 0;border:0;border-bottom:1px dashed var(--line);background:transparent;font-size:11px;outline:none}.remove-strength{width:20px;height:20px;border:0;background:transparent;color:var(--ink-soft);font-size:13px;cursor:pointer}.add-strength{display:block;margin-top:6px;padding:3px 0;border:0;border-bottom:1px solid var(--gold);background:transparent;color:var(--ink-soft);font-size:9px;cursor:pointer}.goal-orbit article.passed{opacity:.55}.goal-orbit article.passed:after{content:"PASS";position:absolute;z-index:6;inset:38% 15%;display:grid;place-items:center;border:3px double var(--wine);background:rgba(239,220,183,.72);color:var(--wine);font:bold 18px Georgia,serif;transform:rotate(-7deg);pointer-events:none}@media(pointer:coarse){.dream-resize{display:none}}
 </style>
 </head>
 <body>
@@ -21898,6 +21899,133 @@
       }, "aria-label": "\u5220\u9664\u56FE\u7247", children: "\xD7" })
     ] });
   }
+  function DreamPhoto({ storageKey, placeholderTitle, placeholderText }) {
+    const [src, setSrc] = (0, import_react.useState)("");
+    const [transform, setTransform] = useStoredState(`${storageKey}-transform`, { x: 0, y: 0, width: 150, rotation: 0 });
+    const pointers = (0, import_react.useRef)(/* @__PURE__ */ new Map());
+    const gesture = (0, import_react.useRef)(null);
+    const withStore = (mode, action) => {
+      const request = indexedDB.open("magic-planner-images", 1);
+      request.onupgradeneeded = () => request.result.createObjectStore("photos");
+      request.onsuccess = () => action(request.result.transaction("photos", mode).objectStore("photos"));
+    };
+    (0, import_react.useEffect)(() => {
+      withStore("readonly", (store) => {
+        const request = store.get(storageKey);
+        request.onsuccess = () => {
+          if (request.result) setSrc(request.result);
+        };
+      });
+    }, [storageKey]);
+    const upload = (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const img = new Image();
+        img.onload = () => {
+          const scale = Math.min(1, 1e3 / Math.max(img.width, img.height));
+          const canvas = document.createElement("canvas");
+          canvas.width = Math.round(img.width * scale);
+          canvas.height = Math.round(img.height * scale);
+          canvas.getContext("2d")?.drawImage(img, 0, 0, canvas.width, canvas.height);
+          const data = canvas.toDataURL("image/jpeg", 0.84);
+          setSrc(data);
+          withStore("readwrite", (store) => store.put(data, storageKey));
+        };
+        img.src = String(reader.result);
+      };
+      reader.readAsDataURL(file);
+      e.target.value = "";
+    };
+    const removePhoto = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setSrc("");
+      withStore("readwrite", (store) => store.delete(storageKey));
+    };
+    const geometry = () => {
+      const points = [...pointers.current.values()];
+      if (points.length < 2) return null;
+      const [a, b] = points;
+      return { distance: Math.hypot(b.x - a.x, b.y - a.y), angle: Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI, centerX: (a.x + b.x) / 2, centerY: (a.y + b.y) / 2 };
+    };
+    const onPointerDown = (e) => {
+      if (e.target.closest(".dream-resize")) return;
+      e.preventDefault();
+      e.currentTarget.setPointerCapture(e.pointerId);
+      pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (pointers.current.size === 1) gesture.current = { mode: "drag", startX: e.clientX, startY: e.clientY, x: transform.x, y: transform.y };
+      if (pointers.current.size === 2) {
+        const g = geometry();
+        gesture.current = { mode: "pinch", ...g, width: transform.width, rotation: transform.rotation, x: transform.x, y: transform.y };
+      }
+    };
+    const onPointerMove = (e) => {
+      if (!pointers.current.has(e.pointerId)) return;
+      pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (pointers.current.size === 1 && gesture.current?.mode === "drag") {
+        setTransform((t) => ({ ...t, x: gesture.current.x + e.clientX - gesture.current.startX, y: gesture.current.y + e.clientY - gesture.current.startY }));
+      }
+      if (pointers.current.size >= 2) {
+        const g = geometry();
+        if (!g) return;
+        if (gesture.current?.mode !== "pinch") gesture.current = { mode: "pinch", ...g, width: transform.width, rotation: transform.rotation, x: transform.x, y: transform.y };
+        setTransform({
+          width: Math.max(70, Math.min(320, gesture.current.width * (g.distance / Math.max(1, gesture.current.distance)))),
+          rotation: gesture.current.rotation + (g.angle - gesture.current.angle),
+          x: gesture.current.x + g.centerX - gesture.current.centerX,
+          y: gesture.current.y + g.centerY - gesture.current.centerY
+        });
+      }
+    };
+    const finishPointer = (e) => {
+      pointers.current.delete(e.pointerId);
+      if (pointers.current.size === 1) {
+        const [point] = [...pointers.current.values()];
+        gesture.current = { mode: "drag", startX: point.x, startY: point.y, x: transform.x, y: transform.y };
+      } else if (!pointers.current.size) gesture.current = null;
+    };
+    const onHandleDown = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.currentTarget.setPointerCapture(e.pointerId);
+      const startX = e.clientX, startWidth = transform.width;
+      const move = (ev) => setTransform((t) => ({ ...t, width: Math.max(70, Math.min(300, startWidth + (ev.clientX - startX))) }));
+      const end = () => {
+        window.removeEventListener("pointermove", move);
+        window.removeEventListener("pointerup", end);
+      };
+      window.addEventListener("pointermove", move);
+      window.addEventListener("pointerup", end, { once: true });
+    };
+    const hasPhoto = Boolean(src);
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: `dream-photo ${hasPhoto ? "has-photo" : ""}`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "dream-card", children: [
+        !hasPhoto && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "dream-placeholder", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: placeholderTitle }),
+          placeholderText && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: placeholderText })
+        ] }),
+        hasPhoto && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "dream-sticker", style: { width: `${transform.width}px`, transform: `translate(-50%,-50%) translate(${transform.x}px,${transform.y}px) rotate(${transform.rotation}deg)` }, onPointerDown, onPointerMove, onPointerUp: finishPointer, onPointerCancel: finishPointer, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", { src, alt: "人物照片" }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "dream-resize", "aria-label": "拖动调整照片大小", onPointerDown: onHandleDown, children: "↘" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { className: "dream-upload", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: hasPhoto ? "更换" : "＋ 点击放入人物照片" }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", { type: "file", accept: "image/*", onChange: upload })
+        ] }),
+        hasPhoto && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "dream-delete", "aria-label": "删除照片", onClick: removePhoto, children: "×" })
+      ] }),
+      hasPhoto && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "dream-controls", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "dream-reset", onClick: () => setTransform({ x: 0, y: 0, width: 150, rotation: 0 }), children: "重置位置" }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "dream-tip", children: "拖动移动 · 双指缩放旋转" })
+      ] }),
+      hasPhoto && placeholderTitle && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "dream-tag", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: placeholderTitle }),
+        placeholderText && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: placeholderText })
+      ] })
+    ] });
+  }
   function EditableList({ title, items, onChange, max = 14 }) {
     return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { className: "scroll-card", children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "card-heading", children: [
@@ -22004,11 +22132,22 @@
   function LifePage() {
     const [wishes, setWishes] = useStoredState("planner-wishes-v3", ["\u7EE9\u70B9\u8FBE\u5230 4.0", "\u62FF\u5230\u68A6\u6821 offer", "\u5B9E\u73B0\u7406\u60F3\u6536\u5165", "\u62E5\u6709\u559C\u6B22\u7684\u5BB6", "\u53BB\u770B\u4E00\u6B21\u6781\u5149", "\u5199\u5B8C\u5C5E\u4E8E\u81EA\u5DF1\u7684\u4E66", "", "", "", "", "", "", "", ""]);
     const [priorities, setPriorities] = useStoredState("planner-priorities", ["\u7167\u987E\u8EAB\u4F53\u4E0E\u60C5\u7EEA", "\u5EFA\u7ACB\u957F\u671F\u521B\u4F5C\u4E60\u60EF", "\u966A\u4F34\u91CD\u8981\u7684\u4EBA"]);
-    const blankModel = (term) => ({ term, name: "", strengths: Array(5).fill(""), passed: false });
-    const [models, setModels] = useStoredState("planner-models-v3", [blankModel("\u77ED\u671F"), blankModel("\u77ED\u671F"), blankModel("\u4E2D\u671F"), blankModel("\u4E2D\u671F"), blankModel("\u957F\u671F"), blankModel("\u957F\u671F")]);
+    const blankModel = (term) => ({ term, name: "", strengths: [""], passed: false });
+    const [models, setModels] = useStoredState("planner-models-v4", [blankModel("\u77ED\u671F"), blankModel("\u77ED\u671F"), blankModel("\u4E2D\u671F"), blankModel("\u4E2D\u671F"), blankModel("\u957F\u671F"), blankModel("\u957F\u671F")]);
     const [restored, setRestored] = (0, import_react.useState)(false);
     const modelDescriptions = { \u77ED\u671F: "\u8EAB\u8FB9\u770B\u5F97\u89C1\u7684\u3001\u6BD4\u6211\u5389\u5BB3\u4E00\u70B9\u7684\u4EBA", \u4E2D\u671F: "\u7F51\u7EDC\u6216\u4E66\u4E0A\u770B\u5230\u7684\u3001\u6BD4\u6211\u5389\u5BB3\u5F88\u591A\u500D\u7684\u4EBA", \u957F\u671F: "\u5BB6\u55BB\u6237\u6653\u3001\u4EBA\u5C3D\u7686\u77E5\u7684\u4F1F\u4EBA" };
+    const modelSymbols = ["\u263C", "\u263E", "\u25C9", "\u25D0", "\u265B", "\u264A"];
     const updateModel = (i, patch) => setModels(models.map((m, n) => n === i ? { ...m, ...patch } : m));
+    const updateStrength = (i, n, value) => {
+      const x = [...models[i].strengths];
+      x[n] = value;
+      updateModel(i, { strengths: x });
+    };
+    const addStrength = (i) => updateModel(i, { strengths: [...models[i].strengths, ""] });
+    const removeStrength = (i, n) => {
+      const x = models[i].strengths.filter((_, idx) => idx !== n);
+      updateModel(i, { strengths: x.length ? x : [""] });
+    };
     (0, import_react.useEffect)(() => {
       if (localStorage.getItem("planner-life-migrated-v4")) return;
       try {
@@ -22041,7 +22180,7 @@
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { id: "role-models", className: "life-goals parchment-panel", children: [
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "section-kicker", children: "DREAM PERSON" }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: "\u699C\u6837\u4EBA\u7269 \xB7 6\u4F4D\u9636\u6BB5\u6027\u201C\u68A6\u4E2D\u60C5\u4EBA\u201D" }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { className: "intro", children: "\u77ED\u671F\u662F\u8EAB\u8FB9\u6BD4\u4F60\u5389\u5BB3\u4E00\u70B9\u7684\u4EBA\uFF1B\u4E2D\u671F\u662F\u7F51\u4E0A\u6216\u4E66\u4E2D\u6BD4\u4F60\u5389\u5BB3\u5F88\u591A\u7684\u4EBA\uFF1B\u957F\u671F\u662F\u5BB6\u55BB\u6237\u6653\u7684\u4F1F\u4EBA\u3002\u6BCF\u4F4D\u5206\u6790\u4E94\u9879\u4F60\u6B63\u5728\u57F9\u517B\u7684\u4F18\u52BF\u3002" }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { className: "intro", children: "\u77ED\u671F\u662F\u8EAB\u8FB9\u6BD4\u4F60\u5389\u5BB3\u4E00\u70B9\u7684\u4EBA\uFF1B\u4E2D\u671F\u662F\u7F51\u4E0A\u6216\u4E66\u4E2D\u6BD4\u4F60\u5389\u5BB3\u5F88\u591A\u7684\u4EBA\uFF1B\u957F\u671F\u662F\u5BB6\u55BB\u6237\u6653\u7684\u4F1F\u4EBA\u3002\u4E3A\u6BCF\u4F4D\u4E0A\u4F20\u7167\u7247\u3001\u5199\u4E0B\u4F60\u6B63\u5728\u57F9\u517B\u7684\u4F18\u52BF\uFF0C\u8FBE\u6210\u540E\u5C31\u5212\u6389\u3002" }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "goal-orbit", children: [
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "sunburst", children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
             "\u9636\u6BB5\u6027",
@@ -22052,8 +22191,8 @@
           ] }) }),
           models.map((m, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { className: m.passed ? "passed" : "", children: [
             /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "model-visual", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "model-symbol", children: m.term === "\u77ED\u671F" ? "\u263C" : m.term === "\u4E2D\u671F" ? "\u25C9" : "\u263E" }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PhotoSlot, { storageKey: `role-model-${i}`, label: "\u70B9\u51FB\u653E\u5165\u4EBA\u7269\u7167\u7247", placeholderTitle: `${m.term}\u68A6\u4E2D\u60C5\u4EBA`, placeholderText: modelDescriptions[m.term] }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "model-symbol", children: modelSymbols[i] }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DreamPhoto, { storageKey: `role-model-${i}`, placeholderTitle: `${m.term}\u68A6\u4E2D\u60C5\u4EBA`, placeholderText: modelDescriptions[m.term] }),
               /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("em", { children: [
                 m.term,
                 "\u699C\u6837 ",
@@ -22063,11 +22202,12 @@
             /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "model-analysis", children: [
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", { className: "model-name", value: m.name, onChange: (e) => updateModel(i, { name: e.target.value }), placeholder: "\u4EBA\u7269\u59D3\u540D" }),
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: "\u5206\u6790\u4ED6 / \u5979\u8EAB\u4E0A\u6211\u6240\u4E0D\u5177\u5907\u7684\u4F18\u52BF" }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "strength-list", children: m.strengths.map((s, n) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", { value: s, onChange: (e) => {
-                const x = [...m.strengths];
-                x[n] = e.target.value;
-                updateModel(i, { strengths: x });
-              }, placeholder: `${n + 1}. \u4E00\u9879\u503C\u5F97\u5B66\u4E60\u7684\u4F18\u52BF` }, n)) }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "strength-list", children: m.strengths.map((s, n) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "strength-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [n + 1, "."] }),
+                /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", { value: s, onChange: (e) => updateStrength(i, n, e.target.value), placeholder: "\u5199\u4E0B\u4E00\u9879\u503C\u5F97\u5B66\u4E60\u7684\u4F18\u52BF" }),
+                /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "remove-strength", "aria-label": `\u5220\u9664\u7B2C${n + 1}\u9879\u4F18\u52BF`, onClick: () => removeStrength(i, n), children: "\xD7" })
+              ] }, n)) }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "add-strength", onClick: () => addStrength(i), children: "\uFF0B \u6DFB\u52A0\u4E00\u9879\u4F18\u52BF" }),
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { className: "pass-button", onClick: () => updateModel(i, { passed: !m.passed }), children: m.passed ? "\u2713 \u5DF2\u8D85\u8D8A" : "PASS \xB7 \u8FBE\u6210\u540E\u5212\u6389" })
             ] })
           ] }, `${m.term}-${i}`))
