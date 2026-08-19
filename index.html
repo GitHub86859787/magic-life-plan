@@ -41,7 +41,8 @@
 
 .habit-table{display:grid;grid-template-columns:120px repeat(7,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.habit-table>*{min-height:34px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;place-content:center}.habit-table input{width:100%;padding:0 10px;font-size:12px}.habit-table button{border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.15);color:#765037}.habit-table button.checked{background:rgba(118,80,55,.18)}.habit-table b{font:11px Georgia}.kiss-grid{display:grid;grid-template-columns:1fr 1fr;margin:24px 0;border:1px solid #856343}.kiss-grid label{min-height:190px;padding:20px;border-right:1px solid rgba(72,48,32,.45);border-bottom:1px solid rgba(72,48,32,.45)}.kiss-grid label:nth-child(1){background:rgba(166,101,90,.14)}.kiss-grid label:nth-child(2){background:rgba(185,137,73,.17);border-right:0}.kiss-grid label:nth-child(3){background:rgba(106,128,95,.15);border-bottom:0}.kiss-grid label:nth-child(4){background:rgba(90,82,120,.13);border:0}.kiss-grid b{font-size:13px;letter-spacing:.08em}.kiss-grid textarea{width:100%;min-height:130px;padding:12px;font-size:12px}.highlight-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
 .highlight-photo-col{position:relative;min-height:220px;background:rgba(255,255,255,.15);border:1px dashed rgba(107,74,48,.3);border-radius:6px;display:grid;place-items:center}
-.highlight-photo-col .vision-add-btn{position:static}
+.highlight-add-area{position:absolute;inset:0;display:grid;place-items:center;cursor:pointer;font-size:11px;color:var(--ink-soft)}
+.highlight-add-area input{position:absolute;inset:0;opacity:0;cursor:pointer}
 .highlight-stack{display:flex;flex-direction:column;align-items:center;gap:10px}
 .simple-photo{position:relative;width:150px}
 .simple-photo:nth-child(odd){transform:rotate(-2deg)}
@@ -50,7 +51,23 @@
 .simple-photo .vision-remove{top:-8px;right:-8px}
 .highlight-text-col{width:100%;min-height:160px;padding:14px;border:1px dashed rgba(107,74,48,.37);font-size:12px;line-height:1.9}
 @media(max-width:720px){.highlight-layout{grid-template-columns:1fr}}
-.highlight textarea{width:100%;min-height:130px;padding:18px;line-height:2}.mood-summary{text-align:center}.moon-face{font-size:60px;color:#8d663c}.mood-summary p{font-size:12px}.aha-panel article{display:grid;grid-template-columns:26px 1fr;gap:8px;margin:13px 0;padding:12px;background:rgba(173,121,74,.11);border:1px solid rgba(115,79,49,.25)}.aha-panel article span{grid-row:1/3;font-size:22px;color:#9a7045}.aha-panel article input{border-bottom:1px solid var(--line);font-size:11px}.aha-panel article textarea{min-height:70px;font-size:12px}.free-page{margin-top:24px}.free-page>p{text-align:center;font-size:12px}.free-canvas{position:relative;min-height:520px;padding:20px;background-color:rgba(249,236,208,.4);border:1px solid rgba(107,74,48,.2);border-radius:4px}.free-canvas-actions{display:flex;gap:10px;justify-content:center;margin-top:14px}.free-note{position:absolute;left:50%;top:0;width:180px;background:#fdf6e3;box-shadow:0 6px 14px rgba(50,30,15,.22);padding:8px;touch-action:none}.free-note-handle{text-align:center;font-size:10px;color:var(--ink-soft);cursor:grab;padding:2px 0 4px;letter-spacing:.2em}.free-note textarea{width:100%;border:0;background:transparent;font-size:12px;line-height:1.6}footer{display:flex;align-items:center;justify-content:center;gap:15px;margin-top:38px;padding-top:20px;border-top:1px solid rgba(92,62,41,.24);color:#8a6b4d}footer p{font:9px Arial;letter-spacing:.22em}
+.highlight textarea{width:100%;min-height:130px;padding:18px;line-height:2}.mood-summary{text-align:center}.moon-face{font-size:60px;color:#8d663c}.mood-summary p{font-size:12px}.aha-panel article{display:grid;grid-template-columns:26px 1fr;gap:8px;margin:13px 0;padding:12px;background:rgba(173,121,74,.11);border:1px solid rgba(115,79,49,.25)}.aha-panel article span{grid-row:1/3;font-size:22px;color:#9a7045}.aha-panel article input{border-bottom:1px solid var(--line);font-size:11px}.aha-panel article textarea{min-height:70px;font-size:12px}.stage-free-dot,.stage-free-grid,.stage-free-blank{padding:0}
+.book-page.page-free-dot,.book-page.page-free-grid,.book-page.page-free-blank{padding:0!important;border:0!important;box-shadow:none!important;background-image:none!important;background-color:#f2e4c6!important;max-width:none;min-height:100vh}
+.book-page.page-free-dot>footer,.book-page.page-free-grid>footer,.book-page.page-free-blank>footer{display:none}
+.book-page.page-free-dot:after,.book-page.page-free-grid:after,.book-page.page-free-blank:after{display:none!important}
+.free-fullpage{min-height:100vh;display:flex;flex-direction:column}
+.free-canvas.full{flex:1;min-height:100vh;border:0;border-radius:0;padding:24px;background-color:#f2e4c6}
+.free-fab-stack{position:fixed;right:20px;bottom:24px;z-index:15;display:flex;flex-direction:column;gap:12px}
+.free-fab{position:relative;width:48px;height:48px;border-radius:50%;border:1px solid var(--gold);background:rgba(249,236,208,.96);box-shadow:0 6px 16px rgba(50,30,15,.28);font-size:19px;display:grid;place-items:center;cursor:pointer}
+.free-fab input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.free-page-flip-float{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:15}
+.free-page-flip-float .page-flip{margin:0;box-shadow:0 6px 16px rgba(50,30,15,.28);background:rgba(249,236,208,.96)}
+@media(max-width:720px){.free-fab-stack{bottom:70px}.free-page-flip-float{bottom:70px}}
+.free-canvas.bg-blank{background-image:none;background-color:#faf3e1}
+.free-page{margin-top:24px}.free-page>p{text-align:center;font-size:12px}.free-canvas{position:relative;min-height:520px;padding:20px;background-color:rgba(249,236,208,.4);border:1px solid rgba(107,74,48,.2);border-radius:4px}
+.free-canvas.bg-dot{background-image:radial-gradient(#8e6a48 1px,transparent 1px);background-size:18px 18px}
+.free-canvas.bg-grid{background-image:linear-gradient(rgba(112,81,52,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(112,81,52,.16) 1px,transparent 1px);background-size:24px 24px}
+.free-canvas-actions{display:flex;gap:10px;justify-content:center;margin-top:14px}.free-note{position:absolute;left:50%;top:0;width:180px;background:#fdf6e3;box-shadow:0 6px 14px rgba(50,30,15,.22);padding:8px;touch-action:none}.free-note-handle{text-align:center;font-size:10px;color:var(--ink-soft);cursor:grab;padding:2px 0 4px;letter-spacing:.2em}.free-note textarea{width:100%;border:0;background:transparent;font-size:12px;line-height:1.6}footer{display:flex;align-items:center;justify-content:center;gap:15px;margin-top:38px;padding-top:20px;border-top:1px solid rgba(92,62,41,.24);color:#8a6b4d}footer p{font:9px Arial;letter-spacing:.22em}
 
 @media(max-width:1050px){.app-shell{grid-template-columns:220px 1fr}.sidebar{padding:28px 18px}.book-stage{padding:24px}.book-page{padding:50px 40px 25px}.two-col,.wide-left{grid-template-columns:1fr}.goal-orbit{grid-template-columns:1fr}.nine-grid label{min-height:150px}}
 @media(max-width:720px){body{background:var(--paper-light)}.app-shell{display:block}.sidebar{display:none}.book-stage{padding:0}.book-page{min-height:100vh;padding:24px 17px 100px;border:0;box-shadow:none}.book-page:before,.book-page:after{display:none}.mobile-brand{display:block;margin:0 auto 25px;border:0;background:transparent;font-size:17px;letter-spacing:.12em}.page-title{margin-bottom:26px}.page-title h1{font-size:25px}.page-title blockquote{font-size:11px;line-height:1.7}.ornament.small:before,.ornament.small:after{width:55px}.focus-ribbon{grid-template-columns:1fr;padding:15px 70px 15px 15px;gap:5px}.focus-ribbon span{font-size:10px}.focus-ribbon input{font-size:15px}.wax-seal{right:9px}.parchment-panel,.scroll-card{padding:19px}.timeline-row{grid-template-columns:46px 24px minmax(90px,1fr) 36px}.efficiency-mini{grid-column:3/5;width:100%;padding-bottom:7px}.two-col{gap:16px}.goal-orbit{display:block}.goal-orbit article{margin-top:15px}.nine-grid{grid-template-columns:1fr}.nine-grid label{border-right:0!important;border-bottom:1px solid var(--line)!important;min-height:130px}.nine-grid label:last-child{border-bottom:0!important}.quad-square-wrap{max-width:280px;padding:20px}.habit-panel{overflow-x:auto}.habit-table{min-width:580px}.kiss-grid{grid-template-columns:1fr}.kiss-grid label{border-right:0!important;border-bottom:1px solid rgba(72,48,32,.4)!important}.kiss-grid label:last-child{border-bottom:0!important}.mobile-nav{position:fixed;display:grid;grid-template-columns:repeat(6,1fr);bottom:0;left:0;right:0;z-index:20;background:rgba(44,31,24,.97);border-top:1px solid #a27b4d;padding:7px 4px max(7px,env(safe-area-inset-bottom))}.mobile-nav button{border:0;background:transparent;color:#bba384;padding:5px 1px}.mobile-nav button span{display:block;font-size:16px}.mobile-nav button small{font-size:9px}.mobile-nav button.active{color:#ffe6b4}footer{margin-bottom:5px}}
@@ -63,16 +80,19 @@
 .book-page{max-width:1320px;padding:60px 72px 34px;background-color:#f0dfbd;background-image:radial-gradient(circle at 16% 12%,rgba(255,255,255,.43),transparent 24%),radial-gradient(circle at 83% 76%,rgba(107,68,34,.11),transparent 29%),repeating-radial-gradient(circle at 20% 30%,rgba(92,58,31,.055) 0 1px,transparent 1px 5px)}.book-page:before{inset:17px;border:1px solid rgba(78,48,27,.53);clip-path:polygon(0 0,30px 0,30px 1px,calc(100% - 30px) 1px,calc(100% - 30px) 0,100% 0,100% 30px,calc(100% - 1px) 30px,calc(100% - 1px) calc(100% - 30px),100% calc(100% - 30px),100% 100%,calc(100% - 30px) 100%,calc(100% - 30px) calc(100% - 1px),30px calc(100% - 1px),30px 100%,0 100%,0 calc(100% - 30px),1px calc(100% - 30px),1px 30px,0 30px)}.book-page:after{inset:23px;border:1px solid rgba(99,65,38,.22)}.edge-tab{position:absolute;right:-29px;top:105px;z-index:3;writing-mode:vertical-rl;padding:22px 9px;background:#a98155;color:#f4e4c5;border:1px solid #6c4a31;border-left:0;letter-spacing:.18em;font-size:12px;box-shadow:4px 5px 10px rgba(0,0,0,.25)}.page-title h1{font-size:34px;letter-spacing:.18em}.page-title blockquote{font-family:"Kaiti SC","STKaiti",serif;font-size:14px}.parchment-panel{background:rgba(243,226,193,.36);box-shadow:none}.scroll-card{border:0;margin:14px 13px;background:linear-gradient(90deg,rgba(128,84,45,.13),rgba(246,227,190,.83) 8%,rgba(236,210,166,.74) 50%,rgba(246,227,190,.83) 92%,rgba(128,84,45,.13));box-shadow:0 -9px 0 -5px #b58f62,0 9px 0 -5px #aa8256,0 12px 18px rgba(72,44,26,.14),inset 0 0 35px rgba(100,63,33,.1)}.scroll-card:before{content:"";left:-12px;right:-12px;top:-9px;height:13px;border-radius:50%;background:linear-gradient(#b68d5e,#7e583a);box-shadow:0 2px 2px rgba(55,33,20,.2)}.scroll-card:after{content:"";left:-12px;right:-12px;bottom:-9px;height:13px;border-radius:50%;background:linear-gradient(#c29a68,#815b3c);box-shadow:0 2px 2px rgba(55,33,20,.22)}
 .lined-list .line-item{display:grid;grid-template-columns:22px 38px 1fr;align-items:center;gap:7px;min-height:51px;border-bottom:1px solid var(--line)}.lined-list .line-item>input[type=checkbox]{appearance:none;width:16px;height:16px;border:1px solid #77553a}.lined-list .line-item>input[type=checkbox]:checked:after{content:"◆";display:grid;place-content:center;font-size:9px}.lined-list .line-item>input:last-child{width:100%;font-size:13px}.photo-slot{position:relative;min-height:104px;border:1px dashed rgba(99,65,39,.46);background:rgba(255,248,227,.18);display:grid;place-items:center;overflow:hidden}.photo-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.photo-slot label{position:relative;z-index:2;padding:7px 9px;background:rgba(62,42,29,.76);color:#f1dfbd;font-size:10px;cursor:pointer;opacity:.9}.photo-slot label input{display:none}.photo-slot>button{position:absolute;z-index:3;right:4px;top:4px;width:22px;height:22px;border:1px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(54,34,23,.75);color:#fff}.photo-slot.compact{width:36px;height:36px;min-height:36px;border-radius:50%;display:inline-grid;float:left;margin-right:7px}.photo-slot.compact label{padding:0;background:transparent;color:#765638;font-size:8px;text-align:center}.photo-slot.compact.has-photo label{opacity:0}.photo-slot.compact:hover label{opacity:1;background:rgba(55,35,24,.75);color:#fff;padding:3px}.photo-slot.compact>button{width:16px;height:16px;right:-3px;top:-3px;font-size:10px}
 .page-life>.two-col{align-items:stretch}.life-goals{overflow:hidden;padding:32px 42px 40px}.goal-orbit{display:grid;grid-template-columns:1fr 190px 1fr;grid-template-rows:150px 190px 150px;gap:12px 22px;padding:15px 0}.goal-orbit .sunburst{grid-area:2/2;width:180px;height:180px;margin:auto}.goal-orbit article{margin:0;padding:12px 15px;border:1px dashed rgba(95,63,39,.42);align-self:center;position:relative;background:rgba(247,230,198,.40)}.goal-orbit article:nth-of-type(1){grid-area:1/1}.goal-orbit article:nth-of-type(2){grid-area:1/3}.goal-orbit article:nth-of-type(3){grid-area:2/1}.goal-orbit article:nth-of-type(4){grid-area:2/3}.goal-orbit article:nth-of-type(5){grid-area:3/1}.goal-orbit article:nth-of-type(6){grid-area:3/3}.goal-orbit article:nth-of-type(odd):after{content:"";position:absolute;right:-24px;top:50%;width:24px;border-top:1px dashed #8a6542}.goal-orbit article:nth-of-type(even):after{content:"";position:absolute;left:-24px;top:50%;width:24px;border-top:1px dashed #8a6542}.goal-orbit article>b{font-size:25px}.goal-orbit article .photo-slot+ b{float:none}.goal-orbit input,.goal-orbit textarea{margin-left:0;width:100%}.goal-orbit textarea{min-height:45px}.sunburst:before{content:"";position:absolute;inset:-20px;border:1px dashed rgba(126,90,50,.42);border-radius:50%}
-.nine-grid{background:rgba(226,198,151,.28)}.nine-grid label{min-height:210px}.nine-grid label .photo-slot{margin:10px auto 2px}.nine-grid label.center:before{content:"✦";display:block;text-align:center;color:#9c7144;margin-bottom:3px}.nine-grid textarea{width:100%;font-size:12px;padding-top:8px;background:transparent;border:0}.calendar-grid label{min-height:98px;background:rgba(255,247,225,.14)}.calendar-grid label:nth-child(14n+9),.calendar-grid label:nth-child(14n+10),.calendar-grid label:nth-child(14n+11),.calendar-grid label:nth-child(14n+12),.calendar-grid label:nth-child(14n+13),.calendar-grid label:nth-child(14n+14),.calendar-grid label:nth-child(14n+15){background:rgba(167,126,76,.06)}.timeline-panel{padding-left:45px}.timeline-panel:after{content:"";position:absolute;left:28px;top:83px;bottom:34px;border-left:1px solid #765339}.timeline-row{position:relative}.timeline-row:before{content:"◆";position:absolute;left:-24px;color:#825e3d;font-size:8px;background:#ead6b0;padding:2px}.kiss-grid{position:relative}.kiss-grid:before{content:"◆";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:32px;height:32px;border-radius:50%;background:#5c402f;color:#e8cca0;display:grid;place-items:center}.book-entry{display:grid;grid-template-columns:100px 1fr;gap:16px;padding:6px 0}.book-entry .photo-slot{grid-row:1/4;width:100px;height:130px;min-height:130px;border:0;background:rgba(255,248,227,.15);box-shadow:0 6px 14px rgba(50,30,15,.22)}.book-entry>div,.book-entry textarea{grid-column:2}.book-title-plate{display:flex;align-items:center;justify-content:center;gap:8px;padding:6px 10px;background:rgba(139,99,59,.12);border-radius:3px;border-left:3px solid var(--gold)}.book-glyph{font-size:11px;color:var(--gold)}.book-title-input{flex:0 1 auto;max-width:80%;text-align:center;border:0;background:transparent;font-size:14px;font-weight:600}.book-author-row{display:flex;align-items:center;justify-content:center;gap:6px;padding:6px 10px}.book-author-row i{font:italic 11px Georgia,serif;color:var(--ink-soft)}.book-author-row input{flex:0 1 auto;text-align:center;border:0;background:transparent;font-style:italic;font-family:Georgia,serif;font-size:12px}.book-entry textarea{width:100%;border:0;border-bottom:1px dashed var(--line);padding:8px 2px;margin-top:10px;font-size:12px;background:transparent;text-align:center}.aha-panel article{grid-template-columns:26px 44px 1fr}.aha-panel article>span{grid-row:1/3}.aha-panel article>.photo-slot{grid-row:1/3}.aha-panel article>input,.aha-panel article>textarea{grid-column:3}
+.nine-grid{background:rgba(226,198,151,.28)}.nine-grid label{min-height:210px}.nine-grid label .photo-slot{margin:10px auto 2px}.nine-grid label.center:before{content:"✦";display:block;text-align:center;color:#9c7144;margin-bottom:3px}.nine-grid textarea{width:100%;font-size:12px;padding-top:8px;background:transparent;border:0}.calendar-grid label{min-height:98px;background:rgba(255,247,225,.14)}.calendar-grid label:nth-child(14n+9),.calendar-grid label:nth-child(14n+10),.calendar-grid label:nth-child(14n+11),.calendar-grid label:nth-child(14n+12),.calendar-grid label:nth-child(14n+13),.calendar-grid label:nth-child(14n+14),.calendar-grid label:nth-child(14n+15){background:rgba(167,126,76,.06)}.timeline-panel{padding-left:45px}.timeline-panel:after{content:"";position:absolute;left:28px;top:83px;bottom:34px;border-left:1px solid #765339}.timeline-row{position:relative}.timeline-row:before{content:"◆";position:absolute;left:-24px;color:#825e3d;font-size:8px;background:#ead6b0;padding:2px}.kiss-grid{position:relative}.kiss-grid:before{content:"◆";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:32px;height:32px;border-radius:50%;background:#5c402f;color:#e8cca0;display:grid;place-items:center}.book-entry{padding:6px 0}.book-entry-top{display:flex;align-items:flex-start;justify-content:center;gap:24px;margin-bottom:14px}.book-info-col{display:flex;flex-direction:column;gap:10px;padding-top:16px;max-width:220px}.book-entry .photo-slot{flex:0 0 auto;width:140px;height:180px;min-height:180px;border:0;background:rgba(255,248,227,.15);box-shadow:0 6px 14px rgba(50,30,15,.22)}.book-title-plate{display:flex;align-items:center;gap:2px;padding:6px 10px;background:rgba(139,99,59,.12);border-radius:3px;border-left:3px solid var(--gold);width:fit-content;max-width:100%}.book-glyph{font-size:14px;margin-right:6px}.book-quote-mark{font-size:14px;color:var(--gold)}.book-title-input{flex:0 0 auto;border:0;background:transparent;font-size:14px;font-weight:600}.book-author-row{display:flex;align-items:center;gap:6px;padding:6px 10px}.book-author-row i{font:italic 11px Georgia,serif;color:var(--ink-soft)}.book-author-row input{flex:1;min-width:0;border:0;background:transparent;font-style:italic;font-family:Georgia,serif;font-size:12px}.book-entry textarea{width:100%;border:0;border-bottom:1px dashed var(--line);padding:8px 2px;margin-top:10px;font-size:12px;background:transparent}.aha-panel article{grid-template-columns:26px 44px 1fr}.aha-panel article>span{grid-row:1/3}.aha-panel article>.photo-slot{grid-row:1/3}.aha-panel article>input,.aha-panel article>textarea{grid-column:3}
 @media(max-width:1050px){.book-page{padding:50px 44px 30px}.goal-orbit{grid-template-columns:1fr 155px 1fr}.goal-orbit .sunburst{width:145px;height:145px}.annual-highlights>div:last-child{grid-template-columns:1fr 1fr}}
-@media(max-width:720px){.book-page{padding:25px 17px 105px;background-image:radial-gradient(circle at 15% 5%,rgba(255,255,255,.4),transparent 22%),repeating-radial-gradient(circle at 20% 30%,rgba(92,58,31,.055) 0 1px,transparent 1px 5px)}.edge-tab{display:none}.scroll-card{margin:14px 7px}.life-goals{padding:24px 19px}.goal-orbit{display:block}.goal-orbit .sunburst{margin:10px auto 25px}.goal-orbit article:nth-of-type(n){margin:12px 0}.goal-orbit article:after{display:none}.book-entry{grid-template-columns:90px 1fr}.book-entry .photo-slot{width:90px;height:132px;min-height:132px}.calendar-grid{min-width:760px}.page-title h1{font-size:26px}}
+@media(max-width:720px){.book-page{padding:25px 17px 105px;background-image:radial-gradient(circle at 15% 5%,rgba(255,255,255,.4),transparent 22%),repeating-radial-gradient(circle at 20% 30%,rgba(92,58,31,.055) 0 1px,transparent 1px 5px)}.edge-tab{display:none}.scroll-card{margin:14px 7px}.life-goals{padding:24px 19px}.goal-orbit{display:block}.goal-orbit .sunburst{margin:10px auto 25px}.goal-orbit article:nth-of-type(n){margin:12px 0}.goal-orbit article:after{display:none}.book-entry-top{gap:14px}.book-entry .photo-slot{width:110px;height:145px;min-height:145px}.calendar-grid{min-width:760px}.page-title h1{font-size:26px}}
 
 /* Vision-board and method-faithful planner refinements */
 .list-number{font:9px Georgia;color:#9a7958;text-align:center}.lined-list .line-item{grid-template-columns:22px 28px 1fr}.day-sheet{position:relative;min-width:0;padding:20px 14px 16px;border:1px solid #806040;box-shadow:0 6px 14px rgba(58,36,22,.14)}.day-sheet.single{max-width:720px;margin:0 auto 25px}.day-sheet.kraft{background:linear-gradient(rgba(167,126,76,.22),rgba(188,148,96,.17)),repeating-radial-gradient(circle at 25% 15%,rgba(95,61,34,.07) 0 1px,transparent 1px 4px)}.day-sheet.ivory{background:rgba(255,249,231,.5)}.day-sheet>header{display:grid;grid-template-columns:45px 1fr;gap:8px;align-items:center;padding-bottom:12px;border-bottom:1px double #745338}.day-sheet>header>div:first-child{grid-row:1/3;text-align:center;border-right:1px solid var(--line)}.day-sheet>header small{display:block;font:8px Arial;letter-spacing:.12em}.day-sheet>header b{font-size:25px}.day-sheet>header>input{width:100%;border-bottom:1px solid var(--line);font-size:11px}.day-sheet>header>label{font-size:9px;display:grid;grid-template-columns:auto 35px 1fr;gap:4px;align-items:center}.day-sheet>header>label input{width:100%;accent-color:#8e342e}.overall-auto{display:flex;align-items:center;gap:6px;font-size:9px;color:var(--ink-soft)}.overall-auto strong{font-size:14px;color:var(--ink);font-weight:400}.day-columns{display:grid;grid-template-columns:92px 1fr .8fr 44px;text-align:center;font-size:9px;padding:8px 0;border-bottom:1px solid var(--line)}.day-task{display:grid;grid-template-columns:92px 1fr .8fr 44px;min-height:68px;border-bottom:1px solid var(--line);align-items:stretch}.day-task.is-done{opacity:.54}.order-input{text-align:center;font-size:11px;border-right:1px solid var(--line);padding:0 4px}.task-timer-cell{padding:6px;display:flex;flex-direction:column;justify-content:center;gap:5px;border-right:1px solid var(--line)}.estimate-row{display:flex;align-items:center;justify-content:center;gap:3px}.estimate-input{width:36px;text-align:center;font-size:10px;border:1px solid var(--line);border-radius:4px;padding:2px 0}.estimate-row span{font-size:8px;color:var(--ink-soft)}.timer-row{display:flex;align-items:center;justify-content:center;gap:3px}.timer-clock{font:11px "Courier New",monospace;color:var(--ink-soft);min-width:34px;text-align:center}.timer-row button{width:19px;height:19px;padding:0;border:1px solid var(--gold);border-radius:5px;background:rgba(255,255,255,.5);color:var(--ink);font-size:9px;cursor:pointer;line-height:1}
 
 
 .day-task>div{padding:7px;display:flex;align-items:center}.task-title-area{width:100%;font-size:11px;border:0;background:transparent}.day-task-note{padding:7px;border-left:1px dashed var(--line);display:flex;align-items:center}.day-task-note textarea{width:100%;border:0;background:transparent;font-size:9px;line-height:1.6}.efficiency-block{position:relative;border:0;border-left:1px solid var(--line);background:rgba(255,249,229,.35);overflow:hidden}.efficiency-block i{position:absolute;left:0;right:0;bottom:0;background:rgba(145,47,38,.58);transition:.2s}.efficiency-block span{position:relative;z-index:1;font:9px Georgia;color:#442c21}.work-hours{display:flex;align-items:center;gap:8px;padding:10px 3px;font-size:9px;border-bottom:1px solid var(--line)}.work-hours input{flex:1;border-bottom:1px dotted #876647}.daily-footer{display:grid;grid-template-columns:2fr 1fr;gap:20px}.daily-footer .mood-panel{display:grid;grid-template-columns:120px 1fr;align-items:center}.daily-footer .mood-panel h2{margin:2px 0}.daily-footer .mood-grid{grid-column:2;grid-row:1/3;grid-template-columns:repeat(4,1fr)}.daily-stats{display:grid;place-content:center;text-align:center;border-top:1px solid #7d5b3c;border-bottom:1px solid #7d5b3c}.daily-stats b{font-size:42px;font-weight:400}.daily-stats span{font-size:11px}.daily-stats p{font-size:9px;color:#80634a}
-.vision-board{margin-bottom:28px;padding:34px}.vision-board>p{text-align:center;max-width:740px;margin:-10px auto 23px;font-size:12px;line-height:1.8;color:#76583f}.vision-canvas{position:relative;padding:16px 8px;transition:height .25s ease}.vision-photo{position:absolute;left:50%;top:0;touch-action:none;cursor:grab}.vision-photo:active{cursor:grabbing}.vision-photo-inner{width:100%}.vision-photo img{display:block;width:100%;height:auto;border:0;background:transparent;user-select:none;pointer-events:none;filter:drop-shadow(0 8px 14px rgba(40,25,15,.32))}.vision-remove{position:absolute;z-index:6;top:-9px;right:-9px;width:22px;height:22px;border:1px solid rgba(255,255,255,.65);border-radius:50%;background:rgba(55,34,23,.78);color:#fff;font-size:12px;line-height:1;opacity:.32;transition:opacity .15s}.vision-photo:hover .vision-remove,.vision-remove:focus{opacity:1}.vision-add-btn{position:relative;display:block;width:fit-content;margin:6px auto 0;padding:10px 22px;border:1px dashed var(--gold);border-radius:20px;background:transparent;color:var(--ink-soft);font-size:11px;cursor:pointer}.vision-add-btn input{position:absolute;inset:0;opacity:0;cursor:pointer}.life-lists{align-items:start}.strength-list{clear:both;margin-top:7px}.strength-list input{display:block!important;width:100%!important;margin:0!important;padding:4px 2px!important;border-bottom:1px dotted var(--line)!important;font-size:9px!important}.pass-button{width:100%;margin-top:7px;padding:5px;border:1px solid #846344;background:transparent;font-size:9px;letter-spacing:.08em}.goal-orbit{grid-template-rows:210px 230px 210px}.goal-orbit article.passed{opacity:.5}.goal-orbit article.passed:before{content:"PASS";position:absolute;z-index:3;inset:35% 15%;display:grid;place-items:center;border:3px double #7c2e29;color:#7c2e29;font:bold 22px Georgia;transform:rotate(-8deg);background:rgba(237,217,180,.6)}.energy-name{width:110px;border-bottom:1px dotted var(--line);font-size:11px}.energy-note{font-size:9px;line-height:1.7;color:#7d6148;text-align:center}
+.vision-board{margin-bottom:28px;padding:34px}.vision-board>p{text-align:center;max-width:740px;margin:-10px auto 23px;font-size:12px;line-height:1.8;color:#76583f}.vision-canvas{position:relative;padding:16px 8px;transition:height .25s ease}.vision-photo{position:absolute;left:50%;top:0;touch-action:none;cursor:grab}.vision-photo:active{cursor:grabbing}.vision-photo-inner{width:100%;position:relative}
+.vision-resize-handle{position:absolute;right:-10px;bottom:-10px;width:24px;height:24px;border:1px solid #fff;border-radius:50%;background:var(--ink-soft);color:#fff;font-size:11px;line-height:1;cursor:nwse-resize;display:flex;align-items:center;justify-content:center;touch-action:none}
+.vision-rotate-handle{position:absolute;left:50%;top:-30px;transform:translateX(-50%);width:24px;height:24px;border:1px solid #fff;border-radius:50%;background:var(--ink-soft);color:#fff;font-size:12px;line-height:1;cursor:grab;display:flex;align-items:center;justify-content:center;touch-action:none}
+.vision-photo.selected .vision-photo-inner img{outline:2px solid var(--gold);outline-offset:2px}.vision-photo img{display:block;width:100%;height:auto;border:0;background:transparent;user-select:none;pointer-events:none;filter:drop-shadow(0 8px 14px rgba(40,25,15,.32))}.vision-remove{position:absolute;z-index:6;top:-9px;right:-9px;width:22px;height:22px;border:1px solid rgba(255,255,255,.65);border-radius:50%;background:rgba(55,34,23,.78);color:#fff;font-size:12px;line-height:1;opacity:.32;transition:opacity .15s}.vision-photo:hover .vision-remove,.vision-remove:focus{opacity:1}.vision-add-btn{position:relative;display:block;width:fit-content;margin:6px auto 0;padding:10px 22px;border:1px dashed var(--gold);border-radius:20px;background:transparent;color:var(--ink-soft);font-size:11px;cursor:pointer}.vision-add-btn input{position:absolute;inset:0;opacity:0;cursor:pointer}.life-lists{align-items:start}.strength-list{clear:both;margin-top:7px}.strength-list input{display:block!important;width:100%!important;margin:0!important;padding:4px 2px!important;border-bottom:1px dotted var(--line)!important;font-size:9px!important}.pass-button{width:100%;margin-top:7px;padding:5px;border:1px solid #846344;background:transparent;font-size:9px;letter-spacing:.08em}.goal-orbit{grid-template-rows:210px 230px 210px}.goal-orbit article.passed{opacity:.5}.goal-orbit article.passed:before{content:"PASS";position:absolute;z-index:3;inset:35% 15%;display:grid;place-items:center;border:3px double #7c2e29;color:#7c2e29;font:bold 22px Georgia;transform:rotate(-8deg);background:rgba(237,217,180,.6)}.energy-name{width:110px;border-bottom:1px dotted var(--line);font-size:11px}.energy-note{font-size:9px;line-height:1.7;color:#7d6148;text-align:center}
 .mood-year{margin-bottom:24px}.mood-map{display:grid;grid-template-columns:34px repeat(12,1fr);min-width:850px;border-top:1px solid var(--line);border-left:1px solid var(--line)}.mood-map>*{min-height:22px;display:grid;place-items:center;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.mood-map i,.mood-map b,.mood-map strong{font:9px Georgia;background:rgba(139,99,59,.09)}.mood-map button{border-top:0;border-left:0;background:rgba(255,249,232,.18);font-size:9px}.mood-map .mood-level-1{background:rgba(211,163,72,.46)}.mood-map .mood-level-2{background:rgba(140,153,111,.25)}.mood-map .mood-level-3{background:rgba(100,114,134,.28)}.mood-map .mood-level-4{background:rgba(157,79,68,.35)}.mood-year{overflow-x:auto}.mood-legend{display:flex;gap:16px;margin:10px 0;font-size:9px}.emotion-journal{display:grid;grid-template-columns:120px 1fr;gap:10px}.emotion-journal select{border:1px solid var(--line);padding:9px}.emotion-journal textarea{min-height:72px;border:1px dashed var(--line);padding:9px}.highlight .photo-slot{height:150px;margin:12px 0}.year-lessons{margin-top:24px}.lesson-list{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.lesson-list label{display:grid;grid-template-columns:35px 1fr;align-items:center;border-bottom:1px solid var(--line);min-height:45px}.lesson-list b{font:13px Georgia;color:#98734f}.lesson-list input{width:100%}.year-lessons>textarea{width:100%;min-height:120px;margin-top:18px;padding:15px;border:1px dashed var(--line);line-height:1.8}
 @media(max-width:1050px){.day-sheet{max-width:680px;width:100%;margin:auto}.vision-board>div:last-child{grid-template-rows:155px 155px}.goal-orbit{grid-template-rows:235px 250px 235px}}
 @media(max-width:720px){.daily-footer{grid-template-columns:1fr}.daily-footer .mood-panel{display:block}.daily-footer .mood-grid{grid-template-columns:repeat(4,1fr)}.vision-board{padding:20px}.vision-canvas{min-height:360px}.life-lists{display:block}.mood-map{min-width:760px}.emotion-journal{grid-template-columns:1fr}.lesson-list{grid-template-columns:1fr}.goal-orbit{display:block}}
@@ -116,11 +136,11 @@
 .kiss-cell-2{background:rgba(120,150,90,.14)}
 .kiss-cell-3{background:rgba(110,120,170,.14)}
 .kiss-grid label b{opacity:.55;letter-spacing:.08em}
-.page-flip{display:flex;align-items:center;justify-content:center;gap:14px;margin:-6px 0 20px}
-.page-flip-arrow{width:30px;height:30px;border:1px solid var(--gold);border-radius:50%;background:rgba(255,255,255,.4);color:var(--ink);font-size:16px;line-height:1;cursor:pointer}
+.page-flip{display:flex;align-items:center;justify-content:center;gap:0;margin:18px auto 6px;width:fit-content;padding:5px 8px;border:1px solid var(--gold);border-radius:22px;background:rgba(255,255,255,.3)}
+.page-flip-arrow{width:26px;height:26px;border:0;border-radius:50%;background:transparent;color:var(--ink);font-size:15px;line-height:1;cursor:pointer}
 .page-flip-arrow:disabled{opacity:.3;cursor:default}
-.page-flip-label{font-size:11px;letter-spacing:.06em;color:var(--ink-soft);min-width:120px;text-align:center}
-.page-flip-add{padding:6px 14px;border:1px dashed var(--gold);border-radius:16px;background:transparent;color:var(--ink-soft);font-size:10px;cursor:pointer}
+.page-flip-label{font-size:11px;letter-spacing:.05em;color:var(--ink-soft);min-width:110px;text-align:center;padding:0 6px}
+.page-flip-add{margin-left:4px;padding:5px 12px;border:0;border-left:1px solid rgba(167,124,71,.4);border-radius:0 20px 20px 0;background:transparent;color:var(--ink-soft);font-size:9px;cursor:pointer}
 
 
 
@@ -142,6 +162,29 @@
 .guide-modal-head h2{margin:5px 0 0;font-size:22px;letter-spacing:.08em}
 .guide-modal-close{width:30px;height:30px;border:1px solid var(--gold);border-radius:50%;background:transparent;color:var(--ink-soft);font-size:16px;cursor:pointer}
 .guide-modal-intro{margin:16px 0 20px;font-size:12px;line-height:1.85;color:var(--ink-soft)}
+.guide-modal-intro-row{display:flex;align-items:flex-start;gap:12px;justify-content:space-between}
+.guide-modal-intro-row .guide-modal-intro{flex:1;margin:16px 0 0}
+.guide-replay{flex:0 0 auto;margin-top:14px;padding:6px 12px;border:1px solid var(--gold);border-radius:14px;background:transparent;color:var(--ink-soft);font-size:10px;white-space:nowrap;cursor:pointer}
+.guide-example{margin:6px 0 0;font-size:11px;line-height:1.75;color:#7d6141;background:rgba(167,124,71,.1);border-radius:6px;padding:7px 9px}
+.guide-example i{font-style:normal;font-size:9px;letter-spacing:.1em;color:var(--gold);margin-right:6px}
+.guide-group{margin-top:22px}
+.guide-group-title{font-size:12px;letter-spacing:.15em;color:var(--gold);border-bottom:1px solid rgba(167,124,71,.3);padding-bottom:6px;margin-bottom:14px}
+.tour-card{position:relative;width:100%;max-width:420px;padding:34px 30px 26px;border:1px solid #b99668;border-radius:14px;background:var(--paper-light);box-shadow:0 30px 80px rgba(0,0,0,.5);text-align:center}
+.tour-skip{position:absolute;top:14px;right:16px;border:0;background:transparent;color:var(--ink-soft);font-size:10px;cursor:pointer;text-decoration:underline}
+.tour-progress{font-size:10px;letter-spacing:.1em;color:var(--gold);margin-bottom:6px}
+.tour-icon{display:block;font-size:30px;margin-bottom:6px}
+.tour-card h2{margin:0 0 14px;font-size:19px}
+.tour-tip{font-size:12px;line-height:1.85;color:var(--ink-soft);text-align:left;margin:0 0 10px}
+.tour-example{font-size:11px;line-height:1.75;color:#7d6141;background:rgba(167,124,71,.1);border-radius:6px;padding:9px 11px;text-align:left;margin:0 0 22px}
+.tour-example i{font-style:normal;font-size:9px;letter-spacing:.1em;color:var(--gold);margin-right:6px}
+.tour-nav{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tour-prev,.tour-next{padding:8px 16px;border:1px solid var(--gold);border-radius:18px;background:transparent;color:var(--ink);font-size:11px;cursor:pointer}
+.tour-prev:disabled{opacity:.3;cursor:default}
+.tour-next{background:var(--wine);color:#f2dfba;border-color:var(--wine)}
+.tour-dots{display:flex;gap:4px}
+.tour-dots i{width:5px;height:5px;border-radius:50%;background:rgba(167,124,71,.35)}
+.tour-dots i.on{background:var(--gold)}
+@media(max-width:720px){.tour-card{padding:26px 20px 20px}.guide-modal-intro-row{flex-direction:column}}
 .guide-modal-list{display:grid;gap:16px}
 .guide-entry{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
 .guide-icon{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--gold);border-radius:50%;background:rgba(255,255,255,.5);font-size:15px}
@@ -149,6 +192,9 @@
 .guide-entry p{margin:0;font-size:11px;line-height:1.8;color:var(--ink-soft)}
 @media(max-width:720px){.guide-modal{padding:22px 18px 26px}.guide-entry{grid-template-columns:28px 1fr}.guide-icon{width:28px;height:28px;font-size:13px}}
 .handwrite input,.handwrite textarea{font-family:"Zhi Mang Xing","Caveat",cursive!important;font-size:1.16em!important;letter-spacing:.02em}
+.guide-open{display:flex;align-items:center;gap:8px;margin:14px 18px 0;padding:9px 12px;border:1px solid rgba(222,192,143,.4);border-radius:20px;background:rgba(255,255,255,.04);color:#ead5b0;font-size:11px;letter-spacing:.06em;cursor:pointer}
+.guide-open:hover{background:rgba(213,174,112,.14)}
+.guide-open span{font-size:13px;color:var(--gold)}
 .handwrite-toggle{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 18px 0;padding:9px 12px;border:1px solid rgba(222,192,143,.4);border-radius:20px;background:rgba(255,255,255,.04);color:#ead5b0;font-size:11px}
 .handwrite-toggle button{width:34px;height:19px;border-radius:10px;border:1px solid rgba(222,192,143,.5);background:rgba(255,255,255,.08);position:relative;padding:0}
 .handwrite-toggle button i{position:absolute;top:1px;left:1px;width:15px;height:15px;border-radius:50%;background:#c9a468;transition:.2s}
@@ -21900,27 +21946,32 @@
     { id: "monthly", page: "month", anchor: "monthly-plan", label: "\u6708\u8BA1\u5212", icon: "\u25C8" },
     { id: "quadrant", page: "month", anchor: "quadrant-page", label: "\u65F6\u95F4\u56DB\u8C61\u9650", icon: "\u2727" },
     { id: "daily", page: "today", anchor: "daily-plan", label: "\u65E5\u8BA1\u5212", icon: "\u2637" },
-    { id: "mood", page: "review", anchor: "mood-page", label: "\u5FC3\u60C5\u6253\u5361", icon: "\u263E" },
-    { id: "month-review", page: "review", anchor: "month-review-page", label: "\u6708\u590D\u76D8", icon: "\u25C7" },
+    { id: "month-review", page: "month-review", anchor: "month-review-page", label: "\u6708\u590D\u76D8", icon: "\u25C7" },
+    { id: "mood", page: "mood", anchor: "mood-page", label: "\u5FC3\u60C5\u6253\u5361", icon: "\u263E" },
     { id: "year-review", page: "year-review", anchor: "year-review-page", label: "\u5E74\u590D\u76D8", icon: "\u25C6" },
     { id: "reading", page: "reading", anchor: "reading-page", label: "\u8BFB\u4E66\u6E05\u5355", icon: "\u25D0" },
     { id: "aha", page: "aha", anchor: "aha-page", label: "\u987F\u609F\u65F6\u523B", icon: "\u273A" },
-    { id: "free", page: "free", anchor: "free-page", label: "\u81EA\u7531\u624B\u5E10", icon: "\u2740" }
+    { id: "free-dot", page: "free-dot", anchor: "free-dot-page", label: "\u70B9\u9635\u9875", icon: "\u2740" },
+    { id: "free-grid", page: "free-grid", anchor: "free-grid-page", label: "\u65B9\u683C\u9875", icon: "\u2317" },
+    { id: "free-blank", page: "free-blank", anchor: "free-blank-page", label: "\u7A7A\u767D\u9875", icon: "\u25AD" }
   ];
   var guideContent = {
-    wish: "这不是要逼自己努力，而是先找到你想努力的理由。人生愿望清单，也是你的人生遗愿清单——认真写下在离开这个世界之前，一定要做完的事。敢梦，你才敢实现。",
-    priority: "跟人生愿望清单不一样：愿望清单是你这一辈子想做的事，这里写的是你当下最重要、最该被优先照顾的几件事——可能是这阶段最挂心的人、最想守住的习惯、最不能再拖的事。愿望关乎一生，这里关乎现在。",
-    vision: "把代表你理想生活的照片贴在这里，就像剪下来贴在本子上——点「＋再贴一张」想贴多少张都可以。谷爱凌也是这么做的：把想要的画面先看见，才更容易真的成为那样的人。",
-    mood: "点一下格子会弹出 4 个心情图标，直接点你想要的那个就行（不是循环点击）：开心、普通、低落、焦虑。月末回看整条情绪曲线，能看出自己什么时候效率最高、什么时候最容易崩溃。下面还有一个情绪日记，可以写当天的烦躁点和来源。",
-    role: "定 6 位「阶段性梦中情人」：短期 2 位（身边比你厉害一点的人）、中期 2 位（网上或书里比你厉害很多倍的人）、长期 2 位（家喻户晓的伟人）。每人写下你不具备但值得学习的优势，超越之后记得 PASS 划掉——这一下真的很爽。",
-    quadrant: "不是用来记录事情的，是用来筛选的。写完待办后，把每件事按「重要/紧急」丢进对应象限——回车就能添加，写错了点 × 删掉，想重新筛一遍就点「清空」。重要且紧急立刻做，重要不紧急尽快做（这是拉开差距的事），紧急不重要尽量交给别人，不重要不紧急直接不做。",
-    annual: "九宫格年计划表，不是复盘，是年初用来写期待的。为九个人生维度（身心健康、学习成长、工作事业、人际社交、全年目标、体验突破、原子习惯、社会贡献、家人生活）各写下这一年的期待，中心格写这一年最核心的愿望。",
-    monthly: "这是逆袭最关键的一步，一定要认真填：最上面先写这个月要专注的「奇迹主题」（比如提分/搞钱/健身）。然后是精力饼图——「先拆分再叠加」的意思是：先选几个你这个月想投入精力的板块（用「常用板块」或「自定义板块」加），再逐个拖动滑块定百分比，页面会把它们像切蛋糕一样一段接一段地画成一个圆饼，加到刚好 100% 为止，而不是每个板块单独打钩打叉。下面的日历是个 Done List（已做清单，不是待办）：每天写一件你做了、让自己更接近这个主题的事。",
-    daily: "一页对应一天，日期自动填好，写满就点顶部「＋新开一页」翻到明天，之前的用箭头翻回去看。先想好 6 件最重要的事，直接写在任务描述里就行。左边「时间轴」先填「预计几分钟」，然后点▶开始计时、⏸暂停、✓完成——完成后系统自动拿实际用时跟预计对比算出效率分（预计内=100%，超时自动打折），进度条会实时显示用了多少。备注栏可以写为什么预计错了。整日效率现在是自动算出来的（6件事效率的平均分），不用自己再拖一遍。不想用计时器也行，效率格子还能直接点着手动调。",
-    "month-review": "用 KISS 复盘法：Keep（要继续保留的好习惯）、Improve（需要改进的地方）、Start（想重新开始尝试的事）、Stop（要立刻停止的坏习惯）。旁边的习惯打卡表默认 4 行，点「＋添加一个习惯」可以加到任意多个。每个月写满了点顶部「＋新开一页」翻到下个月，历史月份可以翻回去看。",
-    "year-review": "满意度打分不是拖滑块，是像拿马克笔涂色一样：先选一个颜色，再点格子涂到你想打的分。十二个月的高光瞬间不用在这里重写——你在「月复盘」页写的高光会自动同步显示在这里，这边是只读的。再加上 5 条这一年最深刻的教训，最后回头对照年初的九宫格，检验哪些真的做到了。",
-    reading: "一页对应一本书，就像纸质本子一样，写完这本点顶部「＋新开一页」翻到下一本，之前读过的用箭头翻回去看。每本书记录四样东西：书名、作者、让你「啊哈」的觉醒瞬间、以及最重要也最容易被跳过的一步——这个启发如何运用到你自己的生活里。只摘抄不思考，读完很快就会忘。",
-    aha: "灵感转瞬即逝，想到就立刻记下来，不用等「合适的时机」。方格页和点阵页也可以用来画草图、贴票据、做思维导图，完全自由发挥。"
+    wish: { tip: "不是逼自己努力，而是先找到你想努力的理由。人生愿望清单，也是你的人生遗愿清单——认真写下在离开这个世界之前，一定要做完的事。敢梦，你才敢实现。", example: "比如写「绩点稳拿4.0」「拿到梦校offer那一刻」「30岁实现月入10万」——每划掉一个，就离理想生活更近一步。" },
+    priority: { tip: "跟人生愿望清单不一样：愿望清单是你这一辈子想做的事，这里写的是你当下最重要、最该被优先照顾的几件事。愿望关乎一生，这里关乎现在。", example: "比如这阶段最优先的是「每周陪爸妈吃一顿饭」「论文写完再睡觉」——不是一辈子的愿望，是这几周最不能再拖的事。" },
+    mood: { tip: "点一下格子会弹出 4 个心情图标，直接点你想要的那个就行：开心、普通、低落、焦虑。月末回看整条情绪曲线，能看出自己什么时候效率最高、什么时候最容易崩溃。", example: "比如这个月 15 号连续标了好几天「焦虑」，回头一看正好是考试周——下次考试周就可以提前给自己留缓冲。" },
+    vision: { tip: "把代表你理想生活的照片贴在这里，就像剪下来贴在本子上——想贴多少张都可以。把想要的画面先看见，才更容易真的成为那样的人。", example: "比如贴一张梦想大学的校门、理想中的家、你崇拜的人领奖时的照片——不用写字，看久了自然知道自己要去哪。" },
+    role: { tip: "定 6 位「阶段性梦中情人」：短期 2 位（身边比你厉害一点的人）、中期 2 位（网上或书里比你厉害很多倍的人）、长期 2 位（家喻户晓的伟人）。每人写下你不具备但值得学习的优势，超越之后记得 PASS 划掉。", example: "比如短期写身边那个把市面上所有卷子都刷了一遍、SAT考出满分的同学；长期写一位家喻户晓的伟人。超过短期那位的那天，划掉 PASS，真的很爽。" },
+    quadrant: { tip: "不是用来记录事情的，是用来筛选的。写完待办后，把每件事按「重要/紧急」丢进对应象限——回车就能添加，想重新筛一遍就点「清空」。", example: "比如「回复客户消息」是重要且紧急，立刻做；「学一门新技能」是重要不紧急，但这才是拉开差距的事；「刷手机通知」不重要不紧急，直接不做。" },
+    annual: { tip: "九宫格年计划表，不是复盘，是年初用来写期待的。为九个人生维度各写下这一年的期待，中心格写这一年最核心的愿望。", example: "比如「人际社交」写「今年交 5 个聊得来的朋友」，「工作事业」写「完成一个能拿出手的项目」——年底翻回来看，做到了就是做到了。" },
+    monthly: { tip: "最上面先写这个月要专注的「奇迹主题」，再用精力饼图把精力按百分比分配到不同板块，加到刚好 100%。下面的日历是个 Done List（已做清单，不是待办）：每天写一件你做了、让自己更接近这个主题的事。", example: "比如这个月主题是「雅思冲 7.5」，精力饼图里学习占 50%、健康 20%、社交 20%、生活 10%；日历里每天写「今天做完一套阅读真题」。" },
+    daily: { tip: "一页对应一天，先想好 6 件最重要的事写在任务描述里。左边先填「预计几分钟」，点▶开始计时，完成后系统自动拿实际用时跟预计对比算出效率分。", example: "比如今天 6 件事：写完一套英语试卷、加 HR 好友发资料、回三封邮件……预计写论文 2 小时，实际打卡 3 小时，效率 66%，备注写「被同事拉去开会打断了」。" },
+    "month-review": { tip: "用 KISS 复盘法：Keep（继续保留的好习惯）、Improve（需要改进的地方）、Start（想重新开始的事）、Stop（要立刻停止的坏习惯）。旁边的习惯打卡表可以无限加行。", example: "比如 Start 写「重新开始每天喝够 8 杯水」，Stop 写「不再睡前刷手机到凌晨」；习惯表里加一行「早起」，做到了就点一下变成 ◆。" },
+    "year-review": { tip: "满意度打分不是拖滑块，是像拿马克笔涂色一样：先选一个颜色，再点格子涂到你想打的分。十二个月的高光瞬间会自动同步你在「月复盘」页写的内容，这边只读。", example: "比如满意度打 8 分，用红色涂满 8 格；教训写「我以为自己很强，论文 due 前一天才开始写，下次提前两周开工」。" },
+    reading: { tip: "一页对应一本书，写完这本点「＋新开一页」翻到下一本。每本书记录四样东西：书名、作者、让你「啊哈」的觉醒瞬间、以及这个启发如何运用到你自己的生活里。", example: "比如书名《原子习惯》，觉醒瞬间写「1%的改变，一年后是 37 倍」，如何运用写「把健身绑在起床后已有的习惯上」。" },
+    aha: { tip: "灵感转瞬即逝，想到就立刻记下来，不用等「合适的时机」。", example: "比如坐地铁时突然想到一个选题，或者开会时冒出一句很戳的话——马上打开这页记一笔，哪怕只有一句话。" },
+    "free-dot": { tip: "点阵背景方便手绘对齐，适合画示意图、思维导图，也能直接写字。", example: "比如画一张这个月目标的拆解图，或者随手画个草图记下一个点子的结构。" },
+    "free-grid": { tip: "方格背景适合列表格、画表格化的计划，方格能帮你把字写得整整齐齐。", example: "比如手绘一张本周任务对照表，或者用方格记账、列购物清单。" },
+    "free-blank": { tip: "什么都没有的一页，完全自由——写日记、贴票据、随便涂鸦都行。", example: "比如把今天的电影票根贴上去，写一段没有格式束缚的日记。" }
   };
   var nineLabels = ["\u8EAB\u5FC3\u5065\u5EB7", "\u5B66\u4E60\u6210\u957F", "\u5DE5\u4F5C\u4E8B\u4E1A", "\u4EBA\u9645\u793E\u4EA4", "\u5168\u5E74\u76EE\u6807", "\u4F53\u9A8C\u7A81\u7834", "\u539F\u5B50\u4E60\u60EF", "\u793E\u4F1A\u8D21\u732E", "\u5BB6\u4EBA\u751F\u6D3B"];
   var moods = [["\u5F00\u5FC3", "\u2600"], ["\u5E73\u9759", "\u263E"], ["\u75B2\u60EB", "\u2652"], ["\u7126\u8651", "\u25CC"]];
@@ -21997,7 +22048,7 @@
       el.style.height = "auto";
       el.style.height = `${el.scrollHeight}px`;
     }, [value]);
-    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", { ref, className, value, onChange, placeholder, rows: 1, style: { overflow: "hidden", resize: "none" } });
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", { ref, className, value, onChange, placeholder, rows: 1, style: { overflow: "hidden", resize: "none", width: "100%", boxSizing: "border-box" } });
   }
   function KissGrid({ values, onChange }) {
     const refs = (0, import_react.useRef)([]);
@@ -22271,8 +22322,8 @@
   function GuideBadge({ navId }) {
     const [open, setOpen] = (0, import_react.useState)(false);
     const item = nav.find((n) => n.id === navId);
-    const tip = guideContent[navId];
-    if (!tip) return null;
+    const entry = guideContent[navId];
+    if (!entry) return null;
     return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { className: "guide-badge", children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "guide-trigger", "aria-label": `${item?.label || ""}使用说明`, onClick: () => setOpen((v) => !v), children: "?" }),
       open && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
@@ -22283,29 +22334,86 @@
             " ",
             item?.label
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: tip }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: entry.tip }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { className: "guide-example", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", { children: "\u4F8B\u5B50" }),
+            entry.example
+          ] }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "guide-close", onClick: () => setOpen(false), children: "知道了" })
         ] })
       ] })
     ] });
   }
-  function GuideModal({ onClose }) {
+  var guideGroups = [
+    { title: "\u4EBA\u751F\u65B9\u5411", ids: ["wish", "vision", "role", "annual"] },
+    { title: "\u65E5\u5E38\u6267\u884C", ids: ["daily", "monthly", "quadrant"] },
+    { title: "\u5B9A\u671F\u590D\u76D8", ids: ["mood", "month-review", "year-review"] },
+    { title: "\u81EA\u7531\u8BB0\u5F55", ids: ["reading", "aha", "free-dot", "free-grid", "free-blank"] }
+  ];
+  function GuideModal({ onClose, onReplayTour }) {
     return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "guide-modal-overlay", onClick: onClose, children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "guide-modal", onClick: (e) => e.stopPropagation(), children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "guide-modal-head", children: [
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: "HOW TO USE" }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: "使用指南" })
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: "\u4F7F\u7528\u6307\u5357" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "guide-modal-close", "aria-label": "关闭指南", onClick: onClose, children: "\xD7" })
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "guide-modal-close", "aria-label": "\u5173\u95ED\u6307\u5357", onClick: onClose, children: "\xD7" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { className: "guide-modal-intro", children: "每天花 10 分钟，把这本子写成你自己的人生自传。下面是每个板块的用法，忘了怎么用就回来翻一下——每个板块标题旁边也有个「？」，随时可以点开看。" }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "guide-modal-list", children: nav.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { className: "guide-entry", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "guide-icon", children: item.icon }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: item.label }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: guideContent[item.id] })
-        ] })
-      ] }, item.id)) })
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "guide-modal-intro-row", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { className: "guide-modal-intro", children: "\u5FD8\u4E86\u600E\u4E48\u7528\u5C31\u56DE\u6765\u7FFB\u4E00\u7FFB\u3002\u6BCF\u4E2A\u677F\u5757\u6807\u9898\u65C1\u8FB9\u4E5F\u6709\u4E2A\u300C\uFF1F\u300D\uFF0C\u968F\u65F6\u53EF\u4EE5\u70B9\u5F00\u3002" }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "guide-replay", onClick: onReplayTour, children: "\u91CD\u65B0\u770B\u4E00\u904D\u5F15\u5BFC" })
+      ] }),
+      guideGroups.map((group) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "guide-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { className: "guide-group-title", children: group.title }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "guide-modal-list", children: group.ids.map((id) => {
+          const item = nav.find((n) => n.id === id);
+          const entry = guideContent[id];
+          if (!item || !entry) return null;
+          return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { className: "guide-entry", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "guide-icon", children: item.icon }),
+            /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { children: item.label }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: entry.tip }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { className: "guide-example", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", { children: "\u4F8B\u5B50" }),
+                entry.example
+              ] })
+            ] })
+          ] }, id);
+        }) })
+      ] }, group.title))
+    ] }) });
+  }
+  var onboardingSteps = ["wish", "vision", "role", "annual", "monthly", "quadrant", "daily", "mood", "month-review", "year-review", "reading", "aha", "free-dot"];
+  function OnboardingTour({ onDone }) {
+    const [step, setStep] = (0, import_react.useState)(0);
+    const id = onboardingSteps[step];
+    const item = nav.find((n) => n.id === id);
+    const entry = guideContent[id];
+    const isLast = step === onboardingSteps.length - 1;
+    const next = () => isLast ? onDone() : setStep((s) => s + 1);
+    const prev = () => setStep((s) => Math.max(0, s - 1));
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "guide-modal-overlay", children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "tour-card", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "tour-skip", onClick: onDone, children: "\u8DF3\u8FC7\u5F15\u5BFC" }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "tour-progress", children: [
+        "\u7B2C ",
+        step + 1,
+        " / ",
+        onboardingSteps.length,
+        " \u6B65"
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "tour-icon", children: item?.icon }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: item?.label }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { className: "tour-tip", children: entry?.tip }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { className: "tour-example", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", { children: "\u4F8B\u5B50" }),
+        entry?.example
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "tour-nav", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "tour-prev", disabled: step === 0, onClick: prev, children: "\u2039 \u4E0A\u4E00\u4E2A" }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "tour-dots", children: onboardingSteps.map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", { className: i === step ? "on" : "" }, i)) }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "tour-next", onClick: next, children: isLast ? "\u5F00\u59CB\u4F7F\u7528" : "\u4E0B\u4E00\u4E2A \u203A" })
+      ] })
     ] }) });
   }
   function addPhotoToStore(file, storageKey, done) {
@@ -22330,7 +22438,7 @@
     };
     reader.readAsDataURL(file);
   }
-  function VisionPhoto({ storageKey, initial, onRemove, onBounds }) {
+  function VisionPhoto({ storageKey, initial, onRemove, onBounds, selected, onSelect }) {
     const [src, setSrc] = (0, import_react.useState)("");
     const [ratio, setRatio] = (0, import_react.useState)(1.3);
     const [transform, setTransform] = useStoredState(`${storageKey}-transform`, initial);
@@ -22363,7 +22471,8 @@
       return { distance: Math.hypot(b.x - a.x, b.y - a.y), angle: Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI, centerX: (a.x + b.x) / 2, centerY: (a.y + b.y) / 2 };
     };
     const onPointerDown = (e) => {
-      if (e.target.closest(".vision-remove")) return;
+      if (e.target.closest(".vision-remove") || e.target.closest(".vision-resize-handle") || e.target.closest(".vision-rotate-handle")) return;
+      onSelect && onSelect();
       e.preventDefault();
       e.currentTarget.setPointerCapture(e.pointerId);
       pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
@@ -22398,15 +22507,52 @@
         gesture.current = { mode: "drag", startX: point.x, startY: point.y, x: transform.x, y: transform.y };
       } else if (!pointers.current.size) gesture.current = null;
     };
+    const onResizeDown = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.currentTarget.setPointerCapture(e.pointerId);
+      const startX = e.clientX, startWidth = transform.width;
+      const move = (ev) => setTransform((t) => ({ ...t, width: Math.max(70, Math.min(340, startWidth + (ev.clientX - startX))) }));
+      const end = () => {
+        window.removeEventListener("pointermove", move);
+        window.removeEventListener("pointerup", end);
+      };
+      window.addEventListener("pointermove", move);
+      window.addEventListener("pointerup", end, { once: true });
+    };
+    const onRotateDown = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.currentTarget.setPointerCapture(e.pointerId);
+      const rect = e.currentTarget.closest(".vision-photo").getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2, centerY = rect.top + rect.height / 2;
+      const startAngle = Math.atan2(e.clientY - centerY, e.clientX - centerX) * 180 / Math.PI;
+      const startRotation = transform.rotation;
+      const move = (ev) => {
+        const angle = Math.atan2(ev.clientY - centerY, ev.clientX - centerX) * 180 / Math.PI;
+        setTransform((t) => ({ ...t, rotation: startRotation + (angle - startAngle) }));
+      };
+      const end = () => {
+        window.removeEventListener("pointermove", move);
+        window.removeEventListener("pointerup", end);
+      };
+      window.addEventListener("pointermove", move);
+      window.addEventListener("pointerup", end, { once: true });
+    };
     if (!src) return null;
-    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "vision-photo", style: { width: `${transform.width}px`, transform: `translate(-50%,0) translate(${transform.x}px,${transform.y}px)` }, onPointerDown, onPointerMove, onPointerUp: finishPointer, onPointerCancel: finishPointer, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "vision-photo-inner", style: { transform: `rotate(${transform.rotation}deg)` }, children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", { src, alt: "\u62FC\u8D34\u7167\u7247", onLoad: (e) => setRatio(e.target.naturalHeight / e.target.naturalWidth || 1.3) }) }),
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: `vision-photo ${selected ? "selected" : ""}`, style: { width: `${transform.width}px`, transform: `translate(-50%,0) translate(${transform.x}px,${transform.y}px)` }, onPointerDown, onPointerMove, onPointerUp: finishPointer, onPointerCancel: finishPointer, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "vision-photo-inner", style: { transform: `rotate(${transform.rotation}deg)` }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", { src, alt: "\u62FC\u8D34\u7167\u7247", onLoad: (e) => setRatio(e.target.naturalHeight / e.target.naturalWidth || 1.3) }),
+        selected && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "vision-resize-handle", "aria-label": "\u62D6\u52A8\u8C03\u6574\u5927\u5C0F", onPointerDown: onResizeDown, children: "\u2198" }),
+        selected && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "vision-rotate-handle", "aria-label": "\u62D6\u52A8\u65CB\u8F6C", onPointerDown: onRotateDown, children: "\u21BB" })
+      ] }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "vision-remove", "aria-label": "\u5220\u9664\u8FD9\u5F20\u7167\u7247", onClick: removePhoto, children: "\xD7" })
     ] });
   }
   function VisionBoard() {
     const [items, setItems] = useStoredState("planner-vision-items-v2", []);
     const [bounds, setBounds] = (0, import_react.useState)({});
+    const [selectedId, setSelectedId] = (0, import_react.useState)(null);
     const reportBounds = (0, import_react.useCallback)((id, bottom) => setBounds((b) => ({ ...b, [id]: bottom })), []);
     const canvasHeight = Math.max(200, ...Object.values(bounds), 0) + 60;
     const removeItem = (id) => setItems(items.filter((it) => it.id !== id));
@@ -22425,7 +22571,9 @@
         "\u613F\u666F\u677F",
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GuideBadge, { navId: "vision" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "vision-canvas", style: { height: `${canvasHeight}px` }, children: items.map((it, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(VisionPhoto, { storageKey: `vision-photo-${it.id}`, initial: randomStart(i), onRemove: () => removeItem(it.id), onBounds: reportBounds }, it.id)) }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "vision-canvas", style: { height: `${canvasHeight}px` }, onPointerDown: (e) => {
+        if (e.target.classList.contains("vision-canvas")) setSelectedId(null);
+      }, children: items.map((it, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(VisionPhoto, { storageKey: `vision-photo-${it.id}`, initial: randomStart(i), onRemove: () => removeItem(it.id), onBounds: reportBounds, selected: selectedId === it.id, onSelect: () => setSelectedId(it.id) }, it.id)) }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { className: "vision-add-btn", children: [
         "\uFF0B \u8D34\u7167\u7247\uFF08\u53EF\u591A\u9009\uFF09",
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", { type: "file", accept: "image/*", multiple: true, onChange: handleAdd })
@@ -22501,7 +22649,6 @@
     return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { id: "daily-plan", className: "anchor-mark" }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageTitle, { eyebrow: "DAILY PLAN \xB7 \u65E5\u8BA1\u5212", title: "\u516D\u4EF6\u6700\u91CD\u8981\u7684\u4E8B\u60C5", quote: "\u8BA1\u5212\u662F\u4E3A\u4E86\u6700\u5927\u5316\u4FBF\u6377\u4EBA\u751F\uFF0C\u800C\u4E0D\u662F\u8BA9\u4EBA\u751F\u53D8\u5F97\u66F4\u9EBB\u70E6\u3002", guideId: "daily" }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageFlip, { index, count, onPrev: goPrev, onNext: goNext, onAdd: addPage, label: "\u65E5\u8BA1\u5212" }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { className: `day-sheet single ${index % 2 ? "ivory" : "kraft"}`, children: [
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", { children: [
           /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
@@ -22561,7 +22708,8 @@
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "\u4EF6\u4EFB\u52A1\u5B8C\u6210" }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "\u5199\u4E0D\u6EE1\u4E5F\u6CA1\u5173\u7CFB\u3002\u4E0B\u4E00\u6B21\u8BB0\u5F55\uFF0C\u76F4\u63A5\u63A5\u7740\u5199\u3002" })
         ] })
-      ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageFlip, { index, count, onPrev: goPrev, onNext: goNext, onAdd: addPage, label: "\u65E5\u8BA1\u5212" })
     ] });
   }
   function WishPage() {
@@ -22803,7 +22951,6 @@
     };
     return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageTitle, { eyebrow: "MONTHLY TIME & ENERGY", title: "\u672C\u6708\u7684\u5947\u8FF9\u4E3B\u9898", quote: "\u5148\u9009\u62E9\u7CBE\u529B\u53BB\u5411\uFF0C\u518D\u8BA9\u6BCF\u4E00\u5929\u4E3A\u5B83\u670D\u52A1\u3002" }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageFlip, { index, count, onPrev: goPrev, onNext: goNext, onAdd: addPage, label: monthLabel }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { className: "theme-scroll", children: [
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: "THIS MONTH I FOCUS ON" }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", { className: "theme-cn", children: "\u672C\u6708\u6211\u60F3\u4E13\u6CE8\u7684\u4E3B\u9898" }),
@@ -22903,35 +23050,17 @@
             ] }, n)) })
           ] })
         ] })
-      ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageFlip, { index, count, onPrev: goPrev, onNext: goNext, onAdd: addPage, label: monthLabel })
     ] });
   }
   function blankMonthReview() {
     return { monthLabel: computeMonthLabel(), monthIndex: computeMonthIndex(), habits: ["\u65E9\u8D77", "\u9605\u8BFB", "\u8FD0\u52A8", "\u51A5\u60F3"], checks: {}, kiss: ["", "", "", ""], highlight: "", highlightPhotos: [] };
   }
-  function ReviewPage({ mood, moodYear, setMoodYear }) {
-    const { data, setData, index, count, goPrev, goNext, addPage } = usePagedState("planner-month-review-pages-v2", blankMonthReview);
-    const { habits, checks, kiss, highlight, highlightPhotos, monthLabel, monthIndex } = data;
-    const setHabits = (v) => setData({ habits: v });
-    const setChecks = (v) => setData({ checks: v });
-    const setKiss = (v) => setData({ kiss: v });
-    const setHighlight = (v) => setData({ highlight: v });
-    const addHighlightPhoto = (e) => {
-      const file = e.target.files?.[0];
-      if (!file) return;
-      const id = `h${Date.now()}`;
-      addPhotoToStore(file, `month-highlight-${index}-${id}`, () => setData((d) => ({ ...d, highlightPhotos: [{ id }] })));
-      e.target.value = "";
-    };
-    const removeHighlightPhoto = (id) => setData((d) => ({ ...d, highlightPhotos: d.highlightPhotos.filter((it) => it.id !== id) }));
+  function MoodPage({ moodYear, setMoodYear }) {
     return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageTitle, { eyebrow: "MONTHLY REVIEW \xB7 \u6708\u590D\u76D8", title: "\u770B\u89C1\u81EA\u5DF1\u7684\u6210\u957F\u89C4\u5F8B", quote: "\u590D\u76D8\u4E0D\u662F\u5BA1\u5224\u8FC7\u53BB\uFF0C\u800C\u662F\u66F4\u6E29\u67D4\u5730\u6821\u51C6\u672A\u6765\u3002" }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageTitle, { eyebrow: "MOOD \xB7 \u5FC3\u60C5\u6253\u5361", title: "\u5341\u4E8C\u4E2A\u6708\u60C5\u7EEA\u56FE\u8C31", quote: "\u60C5\u7EEA\u5148\u770B\u89C1\uFF0C\u624D\u80FD\u88AB\u7BA1\u7406\u3002", guideId: "mood" }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { id: "mood-page", className: "parchment-panel mood-year", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "section-kicker", children: "MOOD \xB7 \u5168\u5E74\u5FC3\u60C5\u53EF\u89C6\u5316" }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", { children: [
-          "\u5341\u4E8C\u4E2A\u6708\u60C5\u7EEA\u56FE\u8C31",
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GuideBadge, { navId: "mood" })
-        ] }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "mood-map", children: [
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", { children: "\u65E5" }),
           Array.from({ length: 12 }, (_, m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("b", { children: [
@@ -22949,8 +23078,27 @@
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "\u2601 \u4F4E\u843D" }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "\u25CC \u7126\u8651" })
         ] })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageFlip, { index, count, onPrev: goPrev, onNext: goNext, onAdd: addPage, label: `\u6708\u590D\u76D8 \xB7 ${monthLabel}` }),
+      ] })
+    ] });
+  }
+  function MonthReviewPage() {
+    const [highlightSelected, setHighlightSelected] = (0, import_react.useState)(false);
+    const { data, setData, index, count, goPrev, goNext, addPage } = usePagedState("planner-month-review-pages-v2", blankMonthReview);
+    const { habits, checks, kiss, highlight, highlightPhotos, monthLabel } = data;
+    const setHabits = (v) => setData({ habits: v });
+    const setChecks = (v) => setData({ checks: v });
+    const setKiss = (v) => setData({ kiss: v });
+    const setHighlight = (v) => setData({ highlight: v });
+    const addHighlightPhoto = (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const id = `h${Date.now()}`;
+      addPhotoToStore(file, `month-highlight-${index}-${id}`, () => setData((d) => ({ ...d, highlightPhotos: [{ id }] })));
+      e.target.value = "";
+    };
+    const removeHighlightPhoto = (id) => setData((d) => ({ ...d, highlightPhotos: d.highlightPhotos.filter((it) => it.id !== id) }));
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageTitle, { eyebrow: "MONTHLY REVIEW \xB7 \u6708\u590D\u76D8", title: "\u770B\u89C1\u81EA\u5DF1\u7684\u6210\u957F\u89C4\u5F8B", quote: "\u590D\u76D8\u4E0D\u662F\u5BA1\u5224\u8FC7\u53BB\uFF0C\u800C\u662F\u66F4\u6E29\u67D4\u5730\u6821\u51C6\u672A\u6765\u3002" }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { id: "month-review-page", className: "parchment-panel habit-panel", children: [
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "section-kicker", children: "HABIT TRACKER" }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", { children: [
@@ -22978,20 +23126,23 @@
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "kiss-axis kiss-axis-right", children: "\u4E0D\u597D\u7684" }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)(KissGrid, { values: kiss, onChange: setKiss })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", { className: "scroll-card highlight", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { className: "scroll-card highlight", children: [
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "card-heading", children: [
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "\u2726" }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: "\u672C\u6708\u9AD8\u5149\u77AC\u95F4" }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "\u2726" })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "highlight-layout", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "highlight-photo-col", children: highlightPhotos.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(VisionPhoto, { storageKey: `month-highlight-${index}-${highlightPhotos[0].id}`, initial: { x: 0, y: 20, width: 160, rotation: 0 }, onRemove: () => removeHighlightPhoto(highlightPhotos[0].id) }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { className: "vision-add-btn", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "highlight-photo-col", onPointerDown: (e) => {
+            if (e.target.classList.contains("highlight-photo-col")) setHighlightSelected(false);
+          }, children: highlightPhotos.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(VisionPhoto, { storageKey: `month-highlight-${index}-${highlightPhotos[0].id}`, initial: { x: 0, y: 20, width: 160, rotation: 0 }, onRemove: () => removeHighlightPhoto(highlightPhotos[0].id), selected: highlightSelected, onSelect: () => setHighlightSelected(true) }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { className: "highlight-add-area", children: [
             "\uFF0B \u8D34\u4E00\u5F20",
             /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", { type: "file", accept: "image/*", onChange: addHighlightPhoto })
           ] }) }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AutoTextarea, { className: "highlight-text-col", value: highlight, onChange: (e) => setHighlight(e.target.value), placeholder: "\u8FD9\u4E2A\u9AD8\u5149\u65F6\u523B\u5177\u4F53\u662F\u4EC0\u4E48\u4E8B\uFF1F" })
         ] })
       ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageFlip, { index, count, onPrev: goPrev, onNext: goNext, onAdd: addPage, label: `\u6708\u590D\u76D8 \xB7 ${monthLabel}` })
     ] });
   }
   function blankBook() {
@@ -23032,21 +23183,26 @@
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GuideBadge, { navId: "reading" })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { className: "book-entry", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PhotoSlot, { storageKey: `book-cover-${bookIndex}`, label: "\u4E66\u5C01" }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "book-title-plate", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "book-glyph", children: "\u25B8" }),
-            /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", { className: "book-title-input", value: book.title, onChange: (e) => setBook({ title: e.target.value }), placeholder: "\u4E66\u540D" }),
-            /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "book-glyph", children: "\u25C2" })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "book-author-row", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", { children: "by" }),
-            /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", { value: book.author, onChange: (e) => setBook({ author: e.target.value }), placeholder: "\u4F5C\u8005" })
+          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "book-entry-top", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "book-info-col", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "book-title-plate", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "book-glyph", children: "\u{1F4D6}" }),
+                /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "book-quote-mark", children: "\u300A" }),
+                /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", { className: "book-title-input", value: book.title, onChange: (e) => setBook({ title: e.target.value }), placeholder: "\u4E66\u540D", style: { width: `${Math.max(2, (book.title || "\u4E66\u540D").length)}ch` } }),
+                /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "book-quote-mark", children: "\u300B" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "book-author-row", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", { children: "by" }),
+                /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", { value: book.author, onChange: (e) => setBook({ author: e.target.value }), placeholder: "\u4F5C\u8005" })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PhotoSlot, { storageKey: `book-cover-${bookIndex}`, label: "\u4E66\u5C01" })
           ] }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AutoTextarea, { value: book.insight, onChange: (e) => setBook({ insight: e.target.value }), placeholder: "\u6211\u7684\u89C9\u9192\u77AC\u95F4\u2026" }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AutoTextarea, { value: book.practice, onChange: (e) => setBook({ practice: e.target.value }), placeholder: "\u5982\u4F55\u8FD0\u7528\u5230\u751F\u6D3B\u91CC\u2026" })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageFlip, { index: bookIndex, count: bookCount, onPrev: bookPrev, onNext: bookNext, onAdd: addBook, label: "\u672C\u4E66" })
-      ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageFlip, { index: bookIndex, count: bookCount, onPrev: bookPrev, onNext: bookNext, onAdd: addBook, label: "\u672C\u4E66" })
     ] });
   }
   function AhaPage() {
@@ -23069,42 +23225,65 @@
       ] })
     ] });
   }
-  function FreeWritePage() {
-    const { data: freePage, setData: setFreePage, index: freeIndex, count: freeCount, goPrev: freePrev, goNext: freeNext, addPage: addFreePage } = usePagedState("planner-free-pages-v2", blankFreePage);
+  function FreeCanvasPage({ storageKeyPrefix, bgClass, label, sectionId }) {
+    const { data: freePage, setData: setFreePage, index: freeIndex, count: freeCount, goPrev: freePrev, goNext: freeNext, addPage: addFreePage } = usePagedState(storageKeyPrefix, blankFreePage);
     const items = freePage.items || [];
+    const [selectedId, setSelectedId] = (0, import_react.useState)(null);
     const addNote = () => setFreePage({ items: [...items, { id: `n${Date.now()}`, type: "note", text: "" }] });
     const addPhotoItem = (e) => {
       const files = Array.from(e.target.files || []);
       files.forEach((file, k) => {
         const id = `p${Date.now()}_${k}`;
-        addPhotoToStore(file, `free-item-${freeIndex}-${id}`, () => setFreePage((d) => ({ items: [...(d.items || []), { id, type: "photo" }] })));
+        addPhotoToStore(file, `${storageKeyPrefix}-item-${freeIndex}-${id}`, () => setFreePage((d) => ({ items: [...(d.items || []), { id, type: "photo" }] })));
       });
       e.target.value = "";
     };
     const removeItem = (id) => setFreePage({ items: items.filter((it) => it.id !== id) });
     const updateNoteText = (id, text) => setFreePage({ items: items.map((it) => it.id === id ? { ...it, text } : it) });
     const randomStart = (i) => ({ x: (i % 3) * 60 - 60 + Math.random() * 20 - 10, y: Math.floor(i / 3) * 160 + 20 + Math.random() * 16, width: 150, rotation: Math.random() * 10 - 5 });
-    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageTitle, { eyebrow: "FREE PAGE \xB7 \u81EA\u7531\u624B\u5E10", title: "\u6211\u7684\u81EA\u7531\u624B\u5E10", quote: "\u5199\u5B57\u3001\u8D34\u7167\u7247\u3001\u6536\u85CF\u7968\u636E\uFF0C\u60F3\u600E\u4E48\u6392\u7248\u90FD\u53EF\u4EE5\u3002" }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { id: "free-page", className: "parchment-panel free-page", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageFlip, { index: freeIndex, count: freeCount, onPrev: freePrev, onNext: freeNext, onAdd: addFreePage, label: "\u81EA\u7531\u9875" }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "free-canvas", children: [
-          items.map((it, i) => it.type === "photo" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(VisionPhoto, { storageKey: `free-item-${freeIndex}-${it.id}`, initial: randomStart(i), onRemove: () => removeItem(it.id) }, it.id) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FreeNote, { transformKey: `free-item-${freeIndex}-${it.id}-transform`, initial: randomStart(i), value: it.text || "", onChange: (e) => updateNoteText(it.id, e.target.value), onRemove: () => removeItem(it.id) }, it.id))
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "free-canvas-actions", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "vision-add-btn", onClick: addNote, children: "\uFF0B \u52A0\u4E00\u5F20\u4FBF\u7B7A" }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { className: "vision-add-btn", children: [
-            "\uFF0B \u8D34\u7167\u7247",
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { id: sectionId, className: "free-fullpage", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: `free-canvas full ${bgClass}`, onPointerDown: (e) => {
+        if (e.target.classList.contains("free-canvas")) setSelectedId(null);
+      }, children: [
+        items.map((it, i) => it.type === "photo" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(VisionPhoto, { storageKey: `${storageKeyPrefix}-item-${freeIndex}-${it.id}`, initial: randomStart(i), onRemove: () => removeItem(it.id), selected: selectedId === it.id, onSelect: () => setSelectedId(it.id) }, it.id) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FreeNote, { transformKey: `${storageKeyPrefix}-item-${freeIndex}-${it.id}-transform`, initial: randomStart(i), value: it.text || "", onChange: (e) => updateNoteText(it.id, e.target.value), onRemove: () => removeItem(it.id) }, it.id)),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "free-page-flip-float", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageFlip, { index: freeIndex, count: freeCount, onPrev: freePrev, onNext: freeNext, onAdd: addFreePage, label }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "free-fab-stack", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { type: "button", className: "free-fab", onClick: addNote, "aria-label": "\u52A0\u4E00\u5F20\u4FBF\u7B7A", children: "\u270E" }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { className: "free-fab", "aria-label": "\u8D34\u7167\u7247", children: [
+            "\u{1F4F7}",
             /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", { type: "file", accept: "image/*", multiple: true, onChange: addPhotoItem })
           ] })
         ] })
       ] })
     ] });
   }
+  function FreeDotPage() {
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FreeCanvasPage, { storageKeyPrefix: "free-dot", bgClass: "bg-dot", label: "\u70B9\u9635\u9875", sectionId: "free-dot-page" });
+  }
+  function FreeGridPage() {
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FreeCanvasPage, { storageKeyPrefix: "free-grid", bgClass: "bg-grid", label: "\u65B9\u683C\u9875", sectionId: "free-grid-page" });
+  }
+  function FreeBlankPage() {
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FreeCanvasPage, { storageKeyPrefix: "free-blank", bgClass: "bg-blank", label: "\u7A7A\u767D\u9875", sectionId: "free-blank-page" });
+  }
   function Home() {
     const [page, setPage] = (0, import_react.useState)("today");
     const [activeNav, setActiveNav] = (0, import_react.useState)("daily");
     const [showGuide, setShowGuide] = (0, import_react.useState)(false);
+    const [showTour, setShowTour] = (0, import_react.useState)(() => {
+      try {
+        return !localStorage.getItem("planner-onboarded-v1");
+      } catch {
+        return false;
+      }
+    });
+    const finishTour = () => {
+      try {
+        localStorage.setItem("planner-onboarded-v1", "1");
+      } catch {
+      }
+      setShowTour(false);
+    };
     const [handwrite, setHandwrite] = useStoredState("planner-handwrite", false);
     const [mood, setMoodRaw] = useStoredState("planner-mood", "");
     const [moodYear, setMoodYear] = useStoredState("planner-mood-year", {});
@@ -23147,7 +23326,11 @@
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "\u2732" }),
           "\u4F7F\u7528\u6307\u5357"
         ] }),
-        showGuide && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GuideModal, { onClose: () => setShowGuide(false) }),
+        showGuide && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GuideModal, { onClose: () => setShowGuide(false), onReplayTour: () => {
+          setShowGuide(false);
+          setShowTour(true);
+        } }),
+        showTour && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(OnboardingTour, { onDone: finishTour }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "sidebar-note", children: [
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Ornament, {}),
           /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
@@ -23157,7 +23340,7 @@
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", { className: "book-stage", children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: `book-page page-${page}`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", { className: `book-stage stage-${page}`, children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: `book-page page-${page}`, children: [
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "edge-tab", children: nav.find((n) => n.id === activeNav)?.label }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { className: "mobile-brand", onClick: () => goTo(nav.find((n) => n.id === "daily")), children: "\u263C \u4EBA\u751F\u8BA1\u5212\u672C" }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", { type: "button", className: "mobile-guide", onClick: () => setShowGuide(true), children: [
@@ -23171,10 +23354,13 @@
         page === "annual" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AnnualPage, {}),
         page === "year-review" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(YearReviewPage, {}),
         page === "month" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MonthPage, {}),
-        page === "review" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReviewPage, { mood, moodYear, setMoodYear }),
+        page === "mood" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MoodPage, { moodYear, setMoodYear }),
+        page === "month-review" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MonthReviewPage, {}),
         page === "reading" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReadingPage, {}),
         page === "aha" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AhaPage, {}),
-        page === "free" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FreeWritePage, {}),
+        page === "free-dot" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FreeDotPage, {}),
+        page === "free-grid" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FreeGridPage, {}),
+        page === "free-blank" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FreeBlankPage, {}),
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", { children: [
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "\u2619" }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "YOU WERE BORN TO STAND OUT, NOT BLEND IN." }),
