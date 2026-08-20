@@ -23342,14 +23342,25 @@
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
+      return { keyCount: Object.keys(data.localStorage || {}).length, imageCount: Object.keys(data.images || {}).length };
     });
   }
   function importBackup(file) {
     return file.text().then((text) => {
-      const data = JSON.parse(text);
-      if (data.localStorage) {
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error("\u6587\u4EF6\u4E0D\u662F\u6709\u6548\u7684 JSON\uFF0C\u8BF7\u786E\u8BA4\u9009\u7684\u662F\u4E4B\u524D\u5BFC\u51FA\u7684\u5907\u4EFD\u6587\u4EF6");
+      }
+      if (!data || typeof data !== "object") throw new Error("\u6587\u4EF6\u5185\u5BB9\u4E0D\u662F\u4E00\u4E2A\u5BF9\u8C61");
+      let keyCount = 0;
+      if (data.localStorage && typeof data.localStorage === "object") {
         Object.keys(data.localStorage).forEach((key) => {
-          if (key.indexOf("planner-") === 0) localStorage.setItem(key, data.localStorage[key]);
+          if (key.indexOf("planner-") === 0) {
+            localStorage.setItem(key, data.localStorage[key]);
+            keyCount++;
+          }
         });
       }
       return new Promise((resolve, reject) => {
@@ -23360,16 +23371,16 @@
           const images = data.images || {};
           const keys = Object.keys(images);
           if (!keys.length) {
-            resolve();
+            resolve({ keyCount, imageCount: 0 });
             return;
           }
           const tx = db.transaction("photos", "readwrite");
           const store = tx.objectStore("photos");
           keys.forEach((k) => store.put(images[k], k));
-          tx.oncomplete = () => resolve();
-          tx.onerror = () => reject(tx.error);
+          tx.oncomplete = () => resolve({ keyCount, imageCount: keys.length });
+          tx.onerror = () => reject(new Error(`\u56FE\u7247\u5199\u5165\u5931\u8D25: ${tx.error?.message || tx.error}`));
         };
-        request.onerror = () => reject(request.error);
+        request.onerror = () => reject(new Error(`\u6253\u5F00\u56FE\u7247\u6570\u636E\u5E93\u5931\u8D25: ${request.error?.message || request.error}`));
       });
     });
   }
@@ -23379,11 +23390,11 @@
     const handleExport = () => {
       setBusy(true);
       setStatus("");
-      downloadBackup().then(() => {
-        setStatus("\u5DF2\u5BFC\u51FA\uFF0C\u6587\u4EF6\u5DF2\u4E0B\u8F7D\u3002");
+      downloadBackup().then((info) => {
+        setStatus(`\u5DF2\u5BFC\u51FA ${info.keyCount} \u6761\u6570\u636E\u3001${info.imageCount} \u5F20\u56FE\u7247\uFF0C\u6587\u4EF6\u5DF2\u4E0B\u8F7D\u3002`);
         setBusy(false);
-      }).catch(() => {
-        setStatus("\u5BFC\u51FA\u5931\u8D25\uFF0C\u518D\u8BD5\u4E00\u6B21\u3002");
+      }).catch((err) => {
+        setStatus(`\u5BFC\u51FA\u5931\u8D25\uFF1A${err?.message || err}`);
         setBusy(false);
       });
     };
@@ -23391,11 +23402,12 @@
       const file = e.target.files?.[0];
       if (!file) return;
       setBusy(true);
-      setStatus("");
-      importBackup(file).then(() => {
+      setStatus("\u6B63\u5728\u8BFB\u53D6\u6587\u4EF6\u2026");
+      importBackup(file).then((info) => {
+        setStatus(`\u5199\u5165\u6210\u529F\uFF1A${info.keyCount} \u6761\u6570\u636E\u3001${info.imageCount} \u5F20\u56FE\u7247\u3002\u6B63\u5728\u5237\u65B0\u2026`);
         window.location.reload();
-      }).catch(() => {
-        setStatus("\u5BFC\u5165\u5931\u8D25\uFF0C\u8BF7\u786E\u8BA4\u6587\u4EF6\u662F\u4E4B\u524D\u5BFC\u51FA\u7684\u5907\u4EFD\u3002");
+      }).catch((err) => {
+        setStatus(`\u5BFC\u5165\u5931\u8D25\uFF1A${err?.message || err}`);
         setBusy(false);
       });
       e.target.value = "";
